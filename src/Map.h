@@ -4,3 +4,12 @@
 #include <ncurses.h>
 
 
+class map{
+
+    
+
+
+};
+
+
+#endif
