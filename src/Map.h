@@ -4,7 +4,7 @@
 #include <ncurses.h>
 
 
-class map{
+class Map{
 
     
 
