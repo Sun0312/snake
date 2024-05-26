@@ -7,7 +7,6 @@ class GameWin{
 
     //init
     GameWin();
-    //
 
 };
 
