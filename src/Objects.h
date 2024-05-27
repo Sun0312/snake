@@ -12,6 +12,10 @@ struct Position{
 }
 
 class Objects{
+    public:
 
-    //히히히 내 브랜치다
+        Position pos;
+        Objects();
+        Objects(int r , int c);
+
 }
