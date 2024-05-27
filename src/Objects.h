@@ -9,7 +9,7 @@ struct Position{
     Position(int r, int c);
     Position();
 
-}
+};
 
 class Objects{
     public:
@@ -18,4 +18,4 @@ class Objects{
         Objects();
         Objects(int r , int c);
 
-}
+};
