@@ -3,14 +3,14 @@
 
 #include "Objects.h"
 
-class Food : public Objects{
+class Poison : public Objects{
     private:
 
         int foodCnt;    // ScoreBoard에서 사용할 FoodCnt
     public:
         //init
-        Food();
-        Food(int r, int c);
+        Poison();
+        Poison(int r, int c);
 
         //getter
         int getFoodCnt();
@@ -20,13 +20,6 @@ class Food : public Objects{
         void incFoodCnt();  
 
 };
-
-
-
-
-
-
-
 
 
 #endif

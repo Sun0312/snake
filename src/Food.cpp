@@ -2,20 +2,20 @@
 #include "Food.h"
 
 //INIT
-Food::Food(){}
+Poison::Poison(){}
 
-Food::Food(int r, int c):Objects(r, c){
+Poison::Poison(int r, int c):Objects(r, c){
     foodCnt = 0;
 }
 
 
 //GETTER
 
-int Food::getFoodCnt(){
+int Poison::getFoodCnt(){
     return foodCnt;
 }
 
-void Food::incFoodCnt(){
+void Poison::incFoodCnt(){
     foodCnt++;
 }
 
