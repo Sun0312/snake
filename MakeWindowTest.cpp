@@ -1,6 +1,6 @@
 #include <ncurses.h>
 #include <locale.h>
-
+#include <unistd.h>
 int main() {
     // Initialize locale and ncurses
     setlocale(LC_ALL, "");
@@ -39,10 +39,9 @@ int main() {
     border('*','*','*','*','*','*','*','*');
     wborder(win1,'*','*','*','*','*','*','*','*');
     wborder(win2,'*','*','_','-','*','*','*','*');
-    wborder(win3,'*','*','*','*','*','*','*','*');
+    wborder(win3,'█','█','█','█','*','*','*','*');
     wborder(win4,'*','*','*','*','*','*','*','*');
-    
-   
+    mvwaddch(win3,0,0,'█');
     refresh();
     wbkgd(win1,COLOR_PAIR(1));
     wbkgd(win2,COLOR_PAIR(2));
@@ -54,7 +53,16 @@ int main() {
     wrefresh(win3);
     wrefresh(win4);
     getch();
-    
+    for(int i = 1 ; i <90 ; i+=3){
+        wclear(win3);
+        attron(COLOR_PAIR(3));
+        mvwaddch(win3,3,i,'█');
+        mvwaddch(win3,3,i+1,'█');
+        mvwaddch(win3,3,i+2,'█');
+        usleep(300000);
+        wrefresh(win3);
+    }
+    getch();
     // Clear and end ncurses mode
     delwin(win1);
     delwin(win2);
