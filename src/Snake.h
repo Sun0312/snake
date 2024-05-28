@@ -17,22 +17,6 @@
 #include <queue>
 using namespace std;
 
-
-class SnakeHead : public Objects{
-    private:
-        char direction;
-    
-    public:
-        SnakeHead();
-        SnakeHead(int row, int col, char dir);
-    
-        //getter
-        char getDirection();
-        //setter
-        void setDirection(char dir);
-
-};
-
 class SnakeBody : public Objects{
     public:
         SnakeBody();
@@ -41,9 +25,13 @@ class SnakeBody : public Objects{
 class Snake : public Objects{
 
     private:
+        //height and width of 1 snake block
+        int height = 1;
+        int width = 3; 
+
         int length = 3; //기본길이 3
+        char dir = 'r'; //initial direction = right
         queue<Objects> snakes;  // head + body 를 저장하는 queue
-        SnakeHead head; //머리
     public:
         //init
         Snake();
@@ -51,13 +39,15 @@ class Snake : public Objects{
         ~Snake();
         //Getter
         int getLength();
-        SnakeHead getHead();
+        char getDir();
         //Setter
         void addLength();
         void minusLength();
-        void setHeadDir(char dir);
-
-
+        void setDir(char dir);
+        //functions
+        void move(char dir);
+        void grow(char dir);
+        void shrink();
 };
 
 #endif
