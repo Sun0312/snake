@@ -53,7 +53,7 @@ Snake::~Snake(){};
         shrink();
     }
 
-    void Snake::grow(char dir) {
+    void Snake::grow(char dir) {    //키보드입력 -> dir
         Position currentPos = snakes.front().pos;
         Position newPos;
         if (dir == 'l') newPos = Position(currentPos.row, currentPos.col - width);
