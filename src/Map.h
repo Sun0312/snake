@@ -16,17 +16,12 @@
 class Map{
 
     private:
-        WINDOW* map_win;
+        vector<string> grid;
 
     public:
 
-        //init
-        Map();
-        Map(int width, int height);
-        ~Map();
-
-        //getter
-        WINDOW getMap();
+        void loadFromFile(const string& filename);
+        void render(WINDOW* win) const;
 
         //setter
 
