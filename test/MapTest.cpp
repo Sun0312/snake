@@ -20,7 +20,8 @@ public:
         init_pair(1, COLOR_WHITE, COLOR_BLACK);  // 글자: 흰색, 배경: 검은색
         init_pair(2, COLOR_BLACK, COLOR_WHITE);  // 글자: 검은색, 배경: 흰색
         init_pair(3, COLOR_WHITE, COLOR_BLUE);   // 글자: 흰색, 배경: 파란색
-        for (size_t y = 0; y < grid.size(); ++y) {
+        for (size_t y = 0; y < grid.size(); ++y) 
+        {
             for (size_t x = 0; x < grid[y].size(); ++x) {
                 int pair = (grid[y][x] == '1') ? 1 : ((grid[y][x] == '0') ? 2 : 3);
                 attron(COLOR_PAIR(pair));

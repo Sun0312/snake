@@ -27,7 +27,7 @@ class Snake : public Objects{
 
         int length = 3; //기본길이 3
         char dir = 'r'; //initial direction = right
-        queue<Objects> snakes;  // head + body 를 저장하는 queue
+        deque<Objects> snakes;  // head + body 를 저장하는 queue
     public:
         //init
         Snake();
