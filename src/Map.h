@@ -22,11 +22,12 @@ class Map{
         vector<string> grid;
 
     public:
-
-        void loadFromFile(const string& filename);
-        void render(WINDOW* win) const;
+        //init
+        Map();
+        Map(int width, int height);
 
         //setter
+        void loadFromFile(const string& filename);
 
 
 };
