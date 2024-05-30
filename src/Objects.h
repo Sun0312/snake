@@ -12,20 +12,28 @@ struct Position{    //해당 Position은 해당 WINDOW의 상대좌표임
 
     int row;
     int col;
-
     Position(int r, int c);
     Position();
 
 };
 
 class Objects{
+    private:
+        char symbol;
+
     public:
 
         Position pos;
         Objects();
-        Objects(int r , int c);
+        //생성되는 구조물의 위치 row, col, 화면에 그려지는 심볼 sym
+        Objects(int r , int c, char sym);
+        
+
+        //getter
+        char getSymbol(); 
+
         //모든 구조물들은 해당하는 윈도우에 그려질 수 있어야함
-        virtual void render(WINDOW &win);   
+        void render(WINDOW *win);  
 
 };
 

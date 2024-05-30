@@ -4,15 +4,15 @@
 */
 #ifndef _WALL_H
 #define _WALL_H
-
-class Wall{
+#include "Objects.h"
+class Wall: public Objects{
     private:
         bool immune;
     
     public:
         //init
         Wall();
-        Wall(int r, int c);
+        Wall(int r, int c, bool im = false);
         ~Wall();
         
         //getter
