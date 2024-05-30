@@ -28,21 +28,3 @@ void Map::render(WINDOW* win) const {
         }
     }
 }
-int main() {
-    initscr();
-    noecho();
-    curs_set(0);
-    int height = 40;    // 예시로 설정한 맵의 높이
-    int width = 80;     // 예시로 설정한 맵의 너비
-    int start_y = 0;    // 윈도우가 시작할 y 좌표
-    int start_x = 0;    // 윈도우가 시작할 x 좌표
-    WINDOW* map_win = newwin(height, width, start_y, start_x);
-    Map myMap;
-    myMap.loadFromFile("map.txt");
-    myMap.render(map_win);
-    refresh();
-    wrefresh(map_win);
-    getch();
-    endwin();
-    return 0;
-}

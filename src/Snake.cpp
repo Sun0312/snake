@@ -43,7 +43,7 @@ Snake::~Snake(){};
     }
 
     void Snake::grow(char dir) {    //키보드입력 -> dir
-        Position currentPos = snakes.back().pos;   //  현재 헤드위치
+        Position currentPos = snakes.front().pos;   //  현재 헤드위치
         Position newPos;
         if (dir == 'l') newPos = Position(currentPos.row, currentPos.col - width);
         if (dir == 'r') newPos = Position(currentPos.row, currentPos.col + width);
