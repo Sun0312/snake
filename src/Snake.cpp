@@ -3,7 +3,7 @@
 //SNAKEBODY
 SnakeBody::SnakeBody(){};
 
-SnakeBody::SnakeBody(int r, int c):Objects(r,c){
+SnakeBody::SnakeBody(int r, int c):Objects(r,c,'█'){
     ;
 };
 
