@@ -13,10 +13,11 @@
 #include <ncurses.h>
 #include <vector>
 #include <string>
+#include "Board.h"
 using namespace std;
 
 
-class Map{
+class Map : public Board{
 
     private:
         vector<string> grid;
@@ -24,11 +25,14 @@ class Map{
     public:
         //init
         Map();
-        Map(int width, int height);
+        Map(int width, int height,int br, int bc);
+
+
 
         //setter
         void loadFromFile(const string& filename);
 
+        void render() const;
 
 };
 

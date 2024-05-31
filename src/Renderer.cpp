@@ -3,4 +3,11 @@
 
 Renderer::Renderer(){}
 
-void Renderer::render(WINDOW* win, Objects obj = NULL)
+void Renderer::render(WINDOW* win, const Objects &obj)const{
+
+}
+
+void Renderer::render(WINDOW* win, const Board &board)const{
+
+}
+

@@ -1,8 +1,9 @@
+#ifndef _BOARD_H
+#define _BOARD_H
 #include <ncurses.h>
 
-
 class Board{
-    private:
+    protected:
         WINDOW* win;
 
     public:
@@ -13,3 +14,5 @@ class Board{
         //Getter
         WINDOW* getWin();
 };
+
+#endif

@@ -1,9 +1,15 @@
 #include "Map.h"
+#include "Board.h"
 #include <fstream>
 #include <string>
 #include <vector>
 #include <ncurses.h>
 using namespace std;
+
+Map::Map(){}
+Map::Map(int width, int height, int br, int bc):Board(width,height,br,bc){
+    Map::loadFromFile("map.txt");
+}
 
 void Map::loadFromFile(const string& filename) {  // 파일 읽는 함수
     ifstream file(filename);
@@ -14,7 +20,7 @@ void Map::loadFromFile(const string& filename) {  // 파일 읽는 함수
     file.close();
 }
 
-void Map::render(WINDOW* win) const {
+void Map::render() const {
     start_color();
     init_pair(1, COLOR_WHITE, COLOR_BLACK);  // 글자: 흰색, 배경: 검은색
     init_pair(2, COLOR_BLACK, COLOR_WHITE);  // 글자: 검은색, 배경: 흰색
@@ -27,4 +33,5 @@ void Map::render(WINDOW* win) const {
             wattroff(win, COLOR_PAIR(pair));
         }
     }
+    refresh();
 }
