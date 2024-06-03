@@ -11,8 +11,8 @@ class Renderer{
 
         Renderer();
 
-        void render(WINDOW* win, const Objects &obj)const;
-        void render(WINDOW* win, const Board &board)const;
+        void render(const Objects &obj)const;
+        void render(const Board &board)const;
 
 
 

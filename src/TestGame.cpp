@@ -1,20 +1,13 @@
 #include <ncurses.h>
 #include "Map.h"
 #include "Snake.h"
-
-
+#include <typeinfo>
+#include <iostream>
 
 int main(){
 
 
-    Map map = Map();
+    Map map(1,1,0,0);
 
-    initscr();
-    map.render(stdscr);
-    refresh();
-    getch();
-
-
-
-    return 0;
+    cout << typeid(map).name();
 }
