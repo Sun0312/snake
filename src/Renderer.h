@@ -18,6 +18,4 @@ class Renderer{
 
 };
 
-
-
 #endif
