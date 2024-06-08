@@ -17,24 +17,16 @@
 using namespace std;
 
 
-class Map : public Board{
+class Map : public Board {
+private:
+    vector<vector<vector<char>>> maps; // 여러 맵 데이터
+    int currentMapIndex;               // 현재 활성화된 맵 인덱스
 
-    private:
-        vector<string> grid;
-
-    public:
-        //init
-        Map();
-        Map(int width, int height,int br, int bc);
-
-
-
-        //setter
-        void loadFromFile(const string& filename);
-
-        void render() const;
-
+public:
+    Map(int width, int height, int br, int bc);
+    void initializeMaps();             // 맵 데이터 초기화
+    void nextMap();                    // 다음 맵으로 전환
+    void render() const;               // 현재 맵 렌더링
 };
-
 
 #endif

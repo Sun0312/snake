@@ -13,3 +13,5 @@ Objects::Objects(int r, int c, char sym){     //추가로 생성시간 등의 �
 void Objects::render(WINDOW *win){
     mvwaddch(win, pos.row, pos.col,'-');
 }
+
+//낄낄낄
