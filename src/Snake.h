@@ -18,7 +18,7 @@ class SnakeBody : public Objects{
         SnakeBody();
         SnakeBody(int r, int c);
 };
-class Snake : public Objects{
+class Snake {
 
     private:
         //height and width of 1 snake block
@@ -27,7 +27,7 @@ class Snake : public Objects{
 
         int length = 3; //기본길이 3
         char dir = 'r'; //initial direction = right
-        queue<Objects> snakes;  // head + body 를 저장하는 queue
+        deque<Objects> snakes;  // head + body 를 저장하는 queue
     public:
         //init
         Snake();
@@ -44,6 +44,7 @@ class Snake : public Objects{
         void move(char dir);
         void grow(char dir);
         void shrink();
+        void renderSnake(); // snakes에 저장되어있는 body들을 render함
 };
 
 #endif

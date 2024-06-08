@@ -6,7 +6,7 @@
 class Poison : public Objects{
     private:
 
-        int poisonCnt;    // ScoreBoard에서 사용할 FoodCnt
+        static int poisonCnt;    // ScoreBoard에서 사용할 FoodCnt
     public:
         //init
         Poison();
