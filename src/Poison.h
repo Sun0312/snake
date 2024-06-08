@@ -8,6 +8,7 @@ class Poison : public Objects{
 
         static int poisonCnt;    // ScoreBoard에서 사용할 FoodCnt
     public:
+        char symbol = 4;
         //init
         Poison();
         Poison(int r, int c);

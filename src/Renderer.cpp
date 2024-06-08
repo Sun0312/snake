@@ -30,6 +30,5 @@ void Renderer::renderSnake(Map& map, const Snake &snake)const{
 
 
 void Renderer::renderBoard(const Board &board)const{
-
-
+    
 }

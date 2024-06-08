@@ -18,10 +18,7 @@ struct Position{    //해당 Position은 해당 WINDOW의 상대좌표임
 };
 
 class Objects{
-    private:
-        
-
-    public:
+  public:
         char symbol;
         Position pos;
         Objects();

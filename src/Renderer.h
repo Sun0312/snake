@@ -18,7 +18,6 @@ class Renderer{
         void renderBoard(const Board &board)const;
 
 
-
 };
 
 #endif

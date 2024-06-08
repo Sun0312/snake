@@ -4,7 +4,7 @@
 //INIT
 Poison::Poison(){}
 
-Poison::Poison(int r, int c):Objects(r, c,'p'){ //symbol임시 설정
+Poison::Poison(int r, int c):Objects(r, c, symbol){ //symbol임시 설정
     poisonCnt = 0;
 }
 
