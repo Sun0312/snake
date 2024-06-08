@@ -27,6 +27,10 @@ class Map : public Board{
         Map();
         Map(int width, int height,int br, int bc);
 
+        //getter
+        vector<string>* getGrid(){
+            return &grid;
+        }
 
 
         //setter
