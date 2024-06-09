@@ -85,3 +85,7 @@ void Map::render() const {
     }
     wrefresh(win);
 }
+
+vector<vector<vector<char>>>* Map::getGrid(){
+    return &maps;
+}

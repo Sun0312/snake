@@ -27,6 +27,7 @@ public:
     void initializeMaps();             // 맵 데이터 초기화
     void nextMap();                    // 다음 맵으로 전환
     void render() const;               // 현재 맵 렌더링
+    vector<vector<vector<char>>>* getGrid();
 };
 
 #endif
