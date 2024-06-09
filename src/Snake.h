@@ -15,9 +15,11 @@ using namespace std;
 
 class SnakeBody : public Objects{
     public:
+        char symbol = 6;
         SnakeBody();
         SnakeBody(int r, int c);
 };
+
 class Snake {
 
     private:
@@ -27,8 +29,9 @@ class Snake {
 
         int length = 3; //기본길이 3
         char dir = 'r'; //initial direction = right
-        deque<Objects> snakes;  // head + body 를 저장하는 queue
+        
     public:
+    deque<Objects> snakes;  // head + body 를 저장하는 queue
         //init
         Snake();
         Snake(int r, int c, char dir = 'r'); //HEAD의 시작좌표, 방향지정
@@ -36,15 +39,14 @@ class Snake {
         //Getter
         int getLength();
         char getDir();
+    
         //Setter
-        void addLength();
-        void minusLength();
         void setDir(char dir);
         //functions
         void move(char dir);
         void grow(char dir);
         void shrink();
-        void renderSnake(); // snakes에 저장되어있는 body들을 render함
+        
 };
 
 #endif

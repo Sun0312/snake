@@ -22,7 +22,9 @@ class Game{
 
         void runGame(); //run game function
 
+
         char input(); //recieve user input
+
 
 };
 

@@ -14,6 +14,7 @@ void Game::runGame() {
     GameWin gameWin = GameWin();
     Renderer renderer = Renderer();
 
+
     while(gameOver != false) {
 
         char dir = input();

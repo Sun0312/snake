@@ -4,7 +4,7 @@
 //INIT
 Poison::Poison(){}
 
-Poison::Poison(int r, int c):Objects(r, c){
+Poison::Poison(int r, int c):Objects(r, c, symbol){ //temp symbol
     foodCnt = 0;
 }
 

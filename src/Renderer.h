@@ -5,19 +5,19 @@
 #include <ncurses.h>
 #include "Objects.h"
 #include "Board.h"
+#include "Map.h"
+#include "Snake.h"
 class Renderer{
 
     public:
 
         Renderer();
 
-        void render(WINDOW* win, const Objects &obj)const;
-        void render(WINDOW* win, const Board &board)const;
-
+        void renderObj(Map& map, const Objects &obj)const;
+        void renderSnake(Map& map, const Snake &snake)const;
+        void renderBoard(const Board &board)const;
 
 
 };
-
-
 
 #endif

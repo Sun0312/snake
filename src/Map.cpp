@@ -65,6 +65,7 @@ void Map::nextMap() {
 
 int Map::getCMI(){return currentMapIndex;}
 void Map::render() const {
+
     start_color();
     init_pair(1, COLOR_WHITE, COLOR_BLACK);  // 글자: 흰색, 배경: 검은색
     init_pair(2, COLOR_BLACK, COLOR_WHITE);  // 글자: 검은색, 배경: 흰색

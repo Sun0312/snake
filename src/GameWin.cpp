@@ -6,7 +6,7 @@ class GameWin{
     public:
 
     //init
-    GameWin();
+    GameWin() {};
 
 };
 
