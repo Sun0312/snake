@@ -11,10 +11,25 @@
 
 #ifndef _GATE_H
 #define _GATE_H
+#include "Objects.h"
+using namespace std;
 
+class Gate : public Objects{
+    private:
+        static int gateCnt;
+        char outDirection;
 
-class Gate{
+    public:
+        //init
+        Gate();
+        Gate(int* map);
 
+        //getter
+        char getOutDir();
+        int getGateCnt();
+
+        //operations
+        int genRand(int maxLength);
 
 };
 #endif
