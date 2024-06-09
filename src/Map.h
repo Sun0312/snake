@@ -26,9 +26,12 @@ public:
     Map(int width, int height, int br, int bc);
     void initializeMaps();             // 맵 데이터 초기화
     int getCMI();                      //현재 맵 인덱스
+    int getCMI()const;
     void nextMap();                    // 다음 맵으로 전환
-    void render() const;               // 현재 맵 렌더링
-    vector<vector<vector<char>>>* getGrid();
+    void render() const;               // 현재 맵 렌더링환
+
+    vector<vector<char>>* getGrid();    // 현재 맵데이터 반환
+    vector<vector<char>> getGrid()const;
 };
 
 #endif

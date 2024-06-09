@@ -10,3 +10,7 @@ Board::Board(int width, int height,int begin_r, int begin_c){
 WINDOW* Board::getWin(){
     return this->win;
 }
+
+WINDOW* Board::getWin()const{
+    return this->win;
+}

@@ -13,6 +13,7 @@ class Board{
 
         //Getter
         WINDOW* getWin();
+        WINDOW* getWin()const;
 };
 
 #endif
