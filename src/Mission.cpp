@@ -31,7 +31,7 @@ void Mission::nextMission() {
     }
 }
 
-bool Mission::missionClear(int snakeLength, int applesEaten, int poisonsEaten, int gatesPassed) const {
+bool Mission::missionClear(int snakeLength, int foodEaten, int poisonEaten, int gatesPassed) const {
     const vector<int>& currentMission = missions[currentMissionIndex];
-    return snakeLength >= currentMission[0] && applesEaten >= currentMission[1] && poisonsEaten >= currentMission[2] && gatesPassed >= currentMission[3];
+    return snakeLength >= currentMission[0] && foodEaten >= currentMission[1] && poisonEaten >= currentMission[2] && gatesPassed >= currentMission[3];
 }
