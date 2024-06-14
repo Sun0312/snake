@@ -2,25 +2,31 @@
 #include "Score.h"
 
 class Score{
-    Score::Score() : currentLength(0), foodCount(0), poisonCount(0) {}
+    Score::Score() : snakecount(3), foodcount(0), poisoncount(0),gatecount(0) {}
 
-
-void Score::updateLength(int length) {
-    currentLength = length;
+}
+Score::Score(int width,int height,int br,int bc): Board(width,height,br,bc)
+void Score::updateScore(Snake &snake,Food&food,Poison& poison,Gate&gate) {
+        int snakecount=snake.getLength();
+        int foodcount= food.getFoodCnt();
+        int poisoncount= poison.getPoisonCnt();
 }
 
 
-void Score::updatefoodCount(int count) {
-    foodCount = count;
+void Score::displayScore() const{
+    mvwprintw(win, 1, 1, "Score Board");
+    mvwprintw(win, 2, 1, "B: %d/%d", snakecount,maxlength);
+    mvwprintw(win, 3, 1, "+: %d", foodcount);
+    mvwprintw(win, 4, 1, "-: %d", poisoncount);
+    mvwprintw(win, 5, 1, "G: %d", gatecount);
 }
+    
 
 
-void Score::updatepoisonCount(int count) {
-    poisonCount = count;
-}
 
 
-void Score::display(WINDOW* win) 
+
+/*void Score::display(WINDOW* win) 
     werase(win);  
     box(win, 0, 0);  
 
@@ -32,7 +38,7 @@ void Score::display(WINDOW* win)
     mvwprintw(win, 5, 1, "G: %d", gateCount);
 
     wrefresh(win);
-};
+};*/
 // test//
 
 /*

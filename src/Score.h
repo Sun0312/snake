@@ -1,9 +1,3 @@
-/*
-    현재 스코어를 띄워줄 WINDOW객체를 관리하는
-    Score클래스입니다.
-
-*/
-
 
 #define SCORE_H
 #include "Snake.h"
@@ -11,44 +5,23 @@
 #include "Game.h"
 #include "Poison.h"
 #include <ncurses.h>
+#include "Board.h"
 using namespace std;
 
 
-class Score {
-    private:
-    int currentLength;
-    int foodCount;
-    int poisonCount;
-    int gateCount;
-    int maxlength=100;
-    public:
-    Score(); 
+class Score : public Board {
+private:
+    int snakecount;
+    int posioncount;
+    int gatecount;
+    int foodcount;
+    int ScoreWin;
+    int maxlength=10;
+public:
+    Score();
+    void updateScore(const Snake& snake,const Poison& poison,const Food& food,const Gate& gate);
+    Score(int width,int height,int br,int bc);
+    void displayScore() const;
 
-    void updateLenght(int length){
-        currentLength = length;
-    }
-    void updatefoodcount(int count){
-        foodCount = count;
-    }
-    void updatepoisoncount(int count){
-        poisonCount = count;
-    }
-    void updategatecount(int count){
-        gateCount = count;
-    }
 
-    int getSnakeLength() const {
-        return currentLength;
-    }
-    int getFoodCount() const {
-        return foodCount;
-    }
-    int getPoisonCount() const {
-        return poisonCount;
-    }  
-    int getGateCount() const{
-        return gateCount;
-    }
-    
-    //test
-};
+
