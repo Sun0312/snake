@@ -25,7 +25,11 @@ public:
     int getCurrentMissionIndex() const;     // 현재 미션 인덱스 반환
     vector<int> getCurrentMission() const; // 현재 미션 반환
     void nextMission();                     // 다음 미션으로 전환
-    bool missionClear(int snakeLength, int foodEaten, int poisonsEaten, int gatesPassed) const; // 미션 완료 여부 검사
+    bool missionClear(int snakeLength, int foodEaten, int poisonEaten, int gatesPassed) const; // 미션 완료 여부 검사
+
+    vector<int>* getGrid();
+
+    vector<int> getGrid() const;
 };
 
 #endif

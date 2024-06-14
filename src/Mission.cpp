@@ -26,6 +26,13 @@ vector<int> Mission::getCurrentMission() const {
     return missions[currentMissionIndex];
 }
 
+vector<int>* Mission::getGrid(){
+    return &(missions[currentMissionIndex]);
+}
+vector<int> Mission::getGrid() const{
+    return (missions[currentMissionIndex]);
+}
+
 void Mission::nextMission() {
     if (currentMissionIndex + 1 < missions.size()) {
         currentMissionIndex++;
