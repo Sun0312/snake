@@ -3,7 +3,6 @@
 #include "Renderer.h"
 #include "Snake.h"
 #include "Poison.h"
-#include "Wall.h"
 #include "Food.h"
 #include "Map.h"
 
