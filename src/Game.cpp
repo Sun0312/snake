@@ -39,12 +39,15 @@ void Game::runGame(){
 char Game::input() { //recieve user input
     char direction = 'r';
     char input_direction = getch();
-    switch(input_direction) {
-        case KEY_UP: direction = 'u'; break;
-        case KEY_DOWN: direction = 'd'; break;
-        case KEY_LEFT: direction = 'l'; break;
-        case KEY_RIGHT: direction = 'r'; break;
-        default: break;
+
+    if (input_direction == KEY_UP) {
+        direction = 'u';
+    } else if (input_direction == KEY_DOWN) {
+        direction = 'd';
+    } else if (input_direction == KEY_LEFT) {
+        direction = 'l';
+    } else if (input_direction == KEY_RIGHT) {
+        direction = 'r';
     }
     return direction;
 }
