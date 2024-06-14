@@ -23,7 +23,8 @@ class Game{
 
         Poison poison;
         Food food;
-        Gate gate;
+        Gate gate1;
+        Gate gate2;
 
     public:
         //init
@@ -33,8 +34,10 @@ class Game{
         void processInput(char dir);
         char input(); //recieve user input
 
+        // make objects on map
         void makeObjects();
 
+        // generate random number
         int genRand(int minLength, int maxLength);
 
 

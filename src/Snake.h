@@ -39,6 +39,8 @@ class Snake {
         //Getter
         int getLength();
         char getDir();
+        int getPosRow();
+        int getPosCol();
     
         //Setter
         void setDir(char dir);

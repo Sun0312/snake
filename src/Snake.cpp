@@ -29,6 +29,13 @@ Snake::~Snake(){};
         return dir;
     }
 
+    int Snake::getPosRow() {
+        return snakes.front().pos.row;
+    }
+    int Snake::getPosCol() {
+        return snakes.front().pos.col;
+    }
+
     //SNAKE : SETTER
 
     void Snake::setDir(char dir){

@@ -1,6 +1,8 @@
 #include "GameWin.h"
 
-GameWin::GameWin():map(20,60,0,0),mission(),score(),renderer(){}
+GameWin::GameWin():map(20,60,0,0),mission(),score(),renderer(){
+
+}
 
 void GameWin::updateScreen(){
     renderer.renderMap(map);
@@ -9,3 +11,7 @@ void GameWin::updateScreen(){
 }
 
 Map& GameWin::getMap(){return this->map;}
+
+void GameWin::makeObj(Objects& obj){
+    renderer.
+}
