@@ -1,15 +1,6 @@
 #include "Game.h"
-#include "GameWin.h"
-#include "Renderer.h"
-#include "Snake.h"
-#include "Poison.h"
-#include "Food.h"
-#include "Map.h"
 
-#include <ncurses.h>
-
-Game::Game() {
-};
+Game::Game(){}
 
 //(int 최소값, int 최대값)사이의 랜덤 정수 반환
 int Game::genRand(int minlength, int maxLength) {

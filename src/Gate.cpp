@@ -6,11 +6,12 @@
 
 using namespace std;
 
+int Gate::gateCnt = 0;
 Gate::Gate() {
-    this->gateCnt = 0;
+    
 }
 Gate::Gate(vector<vector<char>> &map) {
-    this->gateCnt = 0;
+   
 
     int rowLength = map.size();
     int columnLength = map[0].size();

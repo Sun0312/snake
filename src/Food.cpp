@@ -1,11 +1,13 @@
 
 #include "Food.h"
 
+int Food::foodCnt = 0;
 //INIT
 Food::Food(){}
 
+
 Food::Food(int r, int c):Objects(r, c, symbol){ //temp symbol
-    foodCnt = 0;
+    
 }
 //GETTER
 

@@ -8,14 +8,8 @@
 #ifndef _OBJECTS_H
 #define _OBJECTS_H
 #include <ncurses.h>
-struct Position{    //해당 Position은 해당 WINDOW의 상대좌표임
+#include "Position.h"
 
-    int row;
-    int col;
-    Position(int r, int c);
-    Position();
-
-};
 
 class Objects{
   public:
