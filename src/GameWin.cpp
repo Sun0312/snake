@@ -1,14 +1,7 @@
-#ifndef _GAMEWIN_H
-#define _GAMEWIN_H
+#include "GameWin.h"
 
-class GameWin{
+GameWin::GameWin(){}
 
-    public:
-
-    //init
-    GameWin() {};
-
-};
-
-
-#endif
+void GameWin::updateScreen(){
+    
+}

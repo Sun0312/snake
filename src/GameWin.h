@@ -8,24 +8,31 @@
     모든 화면의 업데이트(render)를 담당합니다.
 */
 
-
-
 #ifndef _GAMEWIN_H
 #define _GAMEWIN_H
 #include <ncurses.h>
-
+#include "Board.h" 
+#include "Map.h"
+#include "Mission.h"   
+#include "Score.h"
 
 class GameWin{
 
-    private:
+    Map map;
+    Mission mission;
+    Score score;
 
     public:
         //init
         GameWin();
+        
 
         //getter
+
         //setter
+
         //function
+        void updateScreen();
 
 
 };
