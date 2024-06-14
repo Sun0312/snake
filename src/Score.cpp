@@ -5,7 +5,7 @@ Score::Score() : snakecount(3), foodcount(0), poisoncount(0),gatecount(0) {}
 
 Score::Score(int width,int height,int br,int bc): Board(width,height,br,bc),snakecount(3), foodcount(0), poisoncount(0),gatecount(0) {};
 
-void Score::updateScore( Snake &snake, Food&food, Poison& poison, Gate&gate) {
+void Score::updateScore(Snake &snake, Food&food, Poison& poison, Gate&gate) {
         snakecount=snake.getLength();
         foodcount= food.getFoodCnt();
         poisoncount= poison.getPoisonCnt();
