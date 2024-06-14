@@ -2,17 +2,18 @@
 #include "Gate.h"
 #include <cstdlib>
 #include <ctime>
+#include <vector>
 
 using namespace std;
 
 Gate::Gate() {
     this->gateCnt = 0;
 }
-Gate::Gate(int* map) {
+Gate::Gate(vector<vector<int>> &map) {
     this->gateCnt = 0;
 
-    int rowLength = *map.size();
-    int columnLength = *map[0].size();
+    int rowLength = map.size();
+    int columnLength = map[0].size();
 
     int r = this->genRand(rowLength);
     int c = this->genRand(columnLength);
