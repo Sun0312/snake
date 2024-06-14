@@ -55,15 +55,6 @@ char Game::input() { //recieve user input
     return direction;
 }
 
-<<<<<<< Updated upstream
-void Game::makeObject(Objects *obj, vector<vector<char>> *map) {
-    
-}
-void Game::makeGate(Gate *gate, vector<vector<char>> *map) {
-    int rowLength = map->size();
-    int columnLength = map[0].size();
-    int r, c;
-=======
 void Game::makeObjects(){
     Map &map = gameWin.getMap();
     vector<vector<char>> mapData = map.getGrid();
@@ -81,7 +72,6 @@ void Game::makeObjects(){
 
         renderer.renderObj(food);
     }
->>>>>>> Stashed changes
 
     // poison
     if (poison.isOnMap() == false) {
