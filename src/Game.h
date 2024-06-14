@@ -30,12 +30,12 @@ class Game{
         Game();
 
         void runGame(); //run game function
-        void processInput();
+        void processInput(char dir);
         char input(); //recieve user input
 
         void makeObjects();
 
-        int genRand(int maxLength);
+        int genRand(int minLength, int maxLength);
 
 
 };
