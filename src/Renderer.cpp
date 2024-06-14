@@ -3,15 +3,15 @@
 
 Renderer::Renderer(){}
 
-void Renderer::renderObj(Map& map, const Objects &obj)const{
+void Renderer::renderObj(Map& map, Objects &obj)const{
     vector<vector<char>> *grid = map.getGrid();
-    int ind = map.getCMI();
+    obj.OnMap = true;
     int r = obj.pos.row;
     int c = obj.pos.col;
     (*grid)[r][c] = obj.symbol;   //해당위치에 바로 대입하려면 Objects의 위치가 변경될때 유효성검사가 필요함
 }
 
-void Renderer::renderSnake(Map& map, const Snake &snake)const{
+void Renderer::renderSnake(Map& map, Snake &snake)const{
     /*  반복문사용
     for (int i = 0 ; i < snake.getLength(); i++){
 
@@ -22,7 +22,7 @@ void Renderer::renderSnake(Map& map, const Snake &snake)const{
     }
     */
     for (auto it = snake.snakes.begin(); it != snake.snakes.end() ; ++it){
-        const Objects& curBody = *it;
+        Objects& curBody = *it;
         Renderer::renderObj(map, curBody);
     }
 
