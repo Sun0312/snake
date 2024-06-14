@@ -1,5 +1,5 @@
-
-#define SCORE_H
+#ifndef _SCORE_H
+#define _SCORE_H
 #include "Snake.h"
 #include "Food.h"
 #include "Game.h"
@@ -25,6 +25,6 @@ public:
 };
 
 
-
+#endif
 
 

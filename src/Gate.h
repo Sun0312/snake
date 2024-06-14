@@ -12,6 +12,7 @@
 #ifndef _GATE_H
 #define _GATE_H
 #include "Objects.h"
+#include "vector"
 using namespace std;
 
 class Gate : public Objects{
