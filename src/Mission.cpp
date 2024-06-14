@@ -2,7 +2,7 @@
 
 using namespace std;
 
-Mission::Mission() : currentMissionIndex(0) {
+Mission::Mission(int width, int height, int br, int bc) : Board(width, height, br, bc), currentMissionIndex(0) {
     initializeMissions(); // 미션 데이터 초기화
 }
 
