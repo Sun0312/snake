@@ -20,11 +20,14 @@ struct Position{    //해당 Position은 해당 WINDOW의 상대좌표임
 class Objects{
   public:
         char symbol;
+        bool OnMap;
         Position pos;
         Objects();
         //생성되는 구조물의 위치 row, col, 화면에 그려지는 심볼 sym
         Objects(int r , int c, char sym);
         
+        //getter
+        bool isOnMap();
 
 };
 

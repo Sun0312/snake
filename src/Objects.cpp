@@ -7,8 +7,11 @@ Objects::Objects(int r, int c, char sym){     //추가로 생성시간 등의 �
 
     this->pos = Position(r, c);
     this->symbol = sym;
+    this -> OnMap = false;
 
 }
+
+bool Objects::isOnMap(){return OnMap;}
 
 
 
