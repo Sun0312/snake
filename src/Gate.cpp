@@ -15,14 +15,28 @@ Gate::Gate(vector<vector<int>> &map) {
     int rowLength = map.size();
     int columnLength = map[0].size();
 
-    int r = this->genRand(rowLength);
-    int c = this->genRand(columnLength);
+    int r = 0;
+    int c = 0;
+
+    // regenerate gate position until it is not in an immune wall
+    while (r != c && r != rowLength && c != columnLength) { 
+        r = this->genRand(rowLength);
+        c = this->genRand(columnLength);
+    }
 
     if (r == 0) { // gate created in upper wall
         this->outDirection = 'd';
+    } else if (r == rowLength) { // gate in bottom wall
+        this->outDirection = 'u';
     } else if (c == 0) { // gate created in left wall
         this->outDirection = 'r';
+    } else if (c == columnLength) { // gate in right wall
+        this->outDirection = 'l';
+    } else { // gate not in wall
+
     }
+
+    map[r][c] = 5;
 }
 
 char Gate::getOutDir() {
