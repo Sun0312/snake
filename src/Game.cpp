@@ -57,40 +57,72 @@ char Game::input() { //recieve user input
 
 void Game::makeObjects(){
     Map &map = gameWin.getMap();
-    vector<vector<char>> mapData = map.getGrid();
-    int rowLength = map.size();
-    int columnLength = map[0].size();
-    int r, c;
+    vector<vector<char>> *mapData = map.getGrid();
 
-    // food
+    int rowLength = mapData->size();
+    int columnLength = mapData[0].size();
+
+    // make food if no food on map
     if (food.isOnMap() == false) {
-
+        int r, c;
 
         r = genRand(1, rowLength);
         c = genRand(1, columnLength);
 
+        food.pos.col = c;
+        food.pos.row = r;
 
         renderer.renderObj(food);
     }
 
-    // poison
+    // make poison if no poison on map
     if (poison.isOnMap() == false) {
-        r = genRand(1, rowLength);
-        c = genRand(1, columnLength);
+        int r, c;
+
+        r = genRand(1, rowLength-1);
+        c = genRand(1, columnLength-1);
+
+        poison.pos.col = c;
+        poison.pos.row = c;
 
         renderer.renderObj(poison);
     }
 
     // gate
-    if(gate.isOnMap() == false) {
-        r = genRand(0, rowLength);
-        c = genRand(0, columnLength);
+    if(gate1.isOnMap() == false) {
+        int r1, c1, r2, c2;
 
-        renderer.renderObj(gate);
+        // change position until not in immune wall
+        while (r1 == c1 && r1 == rowLength || r1 == c1 && c1 == columnLength) {
+            r1 = genRand(0, rowLength);
+            c1 = genRand(0, columnLength);
+        }
+        while (r2 == c2 && r2 == rowLength || r2 == c2 && c2 == columnLength) {
+            r2 = genRand(0, rowLength);
+            c2 = genRand(0, columnLength);
+        }
+
+        // set gate position
+        gate1.pos.col = c1;
+        gate1.pos.row = r1;
+        gate2.pos.col = c2;
+        gate2.pos.row = r2;
+
+        // change map data
+        renderer.renderObj(gate2);
+        renderer.renderObj(gate1);
     }
 }
 
 void Game::processInput(char dir) {
+    Map &map = gameWin.getMap();
 
+    int snakeHead_r, snakeHead_c;
+
+    snakeHead_c = snake.getPosCol();
+    snakeHead_r = snake.getPosRow();
+
+    if (snakeHead_c)
+    
     snake.move(dir);
 }
