@@ -2,10 +2,10 @@
 #define _SCORE_H
 #include "Snake.h"
 #include "Food.h"
-#include "Game.h"
 #include "Poison.h"
 #include <ncurses.h>
 #include "Board.h"
+#include "Gate.h"
 using namespace std;
 
 
