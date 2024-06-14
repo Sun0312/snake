@@ -139,9 +139,11 @@ bool Game::processInput(char dir) {
         if (next_r == gate1.pos.row) {
             snake.setHeadPos(gate2.pos.row, gate2.pos.col);
             snake.move(gate2.getOutDir());
+            gate2.increaseGateCnt();
         } else {
             snake.setHeadPos(gate1.pos.row, gate1.pos.col);
             snake.move(gate1.getOutDir());
+            gate1.increaseGateCnt();
         }
         snake.shrink();
     } else if (mapPosInt == '4') { // encounter poison
