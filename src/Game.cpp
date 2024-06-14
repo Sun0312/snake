@@ -12,6 +12,7 @@
 Game::Game() {
 };
 
+//(int 최소값, int 최대값)사이의 랜덤 정수 반환
 int Game::genRand(int minlength, int maxLength) {
     srand(time(0));
 
@@ -20,7 +21,8 @@ int Game::genRand(int minlength, int maxLength) {
     return randNum;
 }
 
-void Game::runGame() {
+//게임 실행 함수
+void Game::runGame(){
     // game title page
 
     // game page
@@ -29,19 +31,21 @@ void Game::runGame() {
 
         // recieve input
         char dir = input();
-
+        // make Copy of map
+        Map cmap(gameWin.getMap()); //현재 맵의 복사본 cmap생성
         // make objects
-        makeObjects();
+        makeObjects(cmap);          //cmap에 현재 Objects의 위치에 따라서 배치
 
         // process input
         gameOver = processInput(dir);
 
         // update window
-        gameWin.updateScreen();
+        gameWin.updateScreen(cmap);
     }
     // game end page
 }
 
+//유저입력을 방향으로 변환
 char Game::input() { //recieve user input
     char direction = 'r';
     char input_direction = getch();
@@ -55,9 +59,10 @@ char Game::input() { //recieve user input
     return direction;
 }
 
-void Game::makeObjects(){
-    Map &map = gameWin.getMap();
-    vector<vector<char>> *mapData = map.getGrid();
+//Objects 객체를 map에 입력함
+void Game::makeObjects(Map& cmap){
+
+    vector<vector<char>>* mapData = cmap.getGrid();
 
     int rowLength = mapData->size();
     int columnLength = mapData[0].size();
@@ -114,6 +119,7 @@ void Game::makeObjects(){
     }
 }
 
+//유저 Input에 따른 처리과정
 bool Game::processInput(char dir) {
     Map &map = gameWin.getMap();
     vector<vector<char>> *pmap = map.getGrid();

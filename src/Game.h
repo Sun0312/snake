@@ -35,7 +35,7 @@ class Game{
         char input(); //recieve user input
 
         // make objects on map
-        void makeObjects();
+        void makeObjects(Map& cmap);
 
         // generate random number
         int genRand(int minLength, int maxLength);

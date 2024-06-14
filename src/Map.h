@@ -30,7 +30,9 @@ public:
     void nextMap();                    // 다음 맵으로 전환
     void render() const;               // 현재 맵 렌더링환
 
-    vector<vector<char>>* getGrid();    // 현재 맵데이터 반환
+    // 현재 맵데이터의 포인터 반환
+    vector<vector<char>>* getGrid();   
+    //현재 맵데이터 반환
     vector<vector<char>> getGrid()const;
 };
 
