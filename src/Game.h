@@ -43,7 +43,8 @@ class Game{
         // generate random number
         int genRand(int minLength, int maxLength);
 
-
+        // init Game
+        void initGame();
 };
 
 #endif

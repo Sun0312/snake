@@ -147,3 +147,15 @@ bool Game::processInput(char dir) {
     }    
     return true;
 }
+
+void Game::initGame(){
+    initscr();
+    noecho();
+    curs_set(0);
+    box(gameWin.getMap().getWin(),'*','*');
+    wrefresh(myMap.getWin());
+    
+    getch();
+    endwin();
+    return 0;
+}

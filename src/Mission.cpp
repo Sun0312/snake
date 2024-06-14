@@ -6,8 +6,9 @@ Mission::Mission(int width, int height, int br, int bc) : Board(width, height, b
     initializeMissions(); // 미션 데이터 초기화
 }
 
+// 첫 번째 미션 데이터 (Snake 길이, Apple 먹은 개수, Poison 먹은 개수, Gate 통과 횟수)
 void Mission::initializeMissions() {
-    // 첫 번째 미션 데이터 (Snake 길이, Apple 먹은 개수, Poison 먹은 개수, Gate 통과 횟수)
+    
     missions.push_back({10, 3, 2, 1});
 
     // 두 번째 미션 데이터

@@ -43,11 +43,38 @@ void Renderer::renderMap(const Map& map)const{
     init_pair(4, COLOR_WHITE, COLOR_GREEN);  // Apple 색상
     init_pair(5, COLOR_WHITE, COLOR_RED);    // Poision 색상
     init_pair(6, COLOR_WHITE, COLOR_BLUE);   // Gate 색상
+    init_pair(7, COLOR_WHITE, COLOR_YELLOW); // Snake 색상
 
     for (size_t y = 0; y < maps.size(); ++y) {
         for (size_t x = 0; x < maps[y].size(); ++x) {
-            int pair = (maps[y][x] == '2') ? 3 : ((maps[y][x] == '1') ? 1 : 2);
+            int pair;
+            char attr = maps[y][x];
+            switch(attr){
+                case '0':
+                pair = 1;
+                break;
+                case '1':
+                pair = 2;
+                break;
+                case '2':
+                pair = 3;
+                break;
+                case '3':
+                pair = 4;
+                break;
+                case '4':
+                pair = 5;
+                break;
+                case '5':
+                pair = 6;
+                break;
+                case '6':
+                pair = 7;
+                break;
+
+            }
             wattron(win, COLOR_PAIR(pair));
+
             // 각 셀을 가로로 세 번 출력
             for (int i = 0; i < 3; i++) {
                 mvwaddch(win, y, 3 * x + i, ' ');  // x 위치를 3배로 확장하여 출력

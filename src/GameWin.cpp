@@ -1,14 +1,14 @@
 #include "GameWin.h"
 
-GameWin::GameWin():map(20,60,0,0),mission(),score(),renderer(){
+GameWin::GameWin():map(20,60,0,0),mission(5,15,0,65),score(5,15,7,65),renderer(){
 
 }
 
 //맵 객체의 맵을 그려줌
 void GameWin::updateScreen(const Map& omap){
     renderer.renderMap(omap);
-    //미구현renderer.renderMission(mission);
-    //미구현renderer.renderScore(score);
+    //renderer.renderMission(mission);
+    //renderer.renderScore(score);
 }
 
 Map& GameWin::getMap(){return this->map;}
