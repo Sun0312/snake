@@ -18,7 +18,7 @@ class Food : public Objects{
 
         //setter
         //foodCnt를 하나 늘림
-        void incFoodCnt();  
+        void incFoodCnt();
 
 };
 

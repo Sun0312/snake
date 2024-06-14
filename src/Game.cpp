@@ -11,6 +11,14 @@
 
 Game::Game() {};
 
+int Game::genRand(int maxLength) {
+    srand(time(0));
+
+    int randNum = 0 + rand() % (maxLength + 1);
+
+    return randNum;
+}
+
 void Game::runGame() {
     GameWin gameWin = GameWin();
     Renderer renderer = Renderer();
@@ -20,6 +28,7 @@ void Game::runGame() {
 
     Poison poison;
     Food food;
+    Gate gate;
 
     // game title page
 
@@ -27,11 +36,21 @@ void Game::runGame() {
 
     while(gameOver != false) {
 
+        // recieve input
         char dir = input();
 
-        processInput(map.getGrid());
+        vector<vector<char>> *grid = map.getGrid();
 
-        gameWin.update();
+        // make objects
+        makeObject(&poison, grid);
+        makeObject(&food, grid);
+        makeGate(&gate, grid);
+
+        // process input
+        processInput(grid);
+
+        // update window
+        gameWin.update(map);
     }
 
     // game end page
@@ -49,6 +68,30 @@ char Game::input() { //recieve user input
         default: break;
     }
     return direction;
+}
+
+void Game::makeObject(Objects *obj, vector<vector<char>> *map) {
+    int rowLength = map->size();
+    int columnLength = map[0].size();
+    int r, c;
+
+    if (obj->isOnMap() == false) {
+        r = genRand(rowLength);
+        c = genRand(columnLength);
+
+        map[r][c] = obj->symbol;
+    }
+}
+void Game::makeGate(Gate *gate, vector<vector<char>> *map) {
+    int rowLength = map->size();
+    int columnLength = map[0].size();
+    int r, c;
+
+    if (gate->isOnMap() == false) {
+        
+
+        map[r][c] = gate->symbol;
+    }
 }
 
 void Game::processInput(vector<vector<char>> *map) {
