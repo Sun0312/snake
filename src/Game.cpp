@@ -116,8 +116,8 @@ void Game::makeObjects(){
 
 bool Game::processInput(char dir) {
     Map &map = gameWin.getMap();
-    vector<vector<char>> *mapData = map.getGrid();
-
+    vector<vector<char>> *pmap = map.getGrid();
+    vector<vector<char>> mapData = *pmap;
     snake.grow(dir);
 
     int next_r, next_c;
