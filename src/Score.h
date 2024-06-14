@@ -12,16 +12,19 @@ using namespace std;
 class Score : public Board {
 private:
     int snakecount;
-    int posioncount;
+    int poisoncount;
     int gatecount;
     int foodcount;
     int ScoreWin;
-    int maxlength=10;
+    const int maxlength=10;
 public:
     Score();
-    void updateScore(const Snake& snake,const Poison& poison,const Food& food,const Gate& gate);
     Score(int width,int height,int br,int bc);
+    void updateScore(const Snake& snake,const Poison& poison,const Food& food,const Gate& gate);
     void displayScore() const;
+};
+
+
 
 
 
