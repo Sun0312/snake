@@ -21,6 +21,7 @@ class GameWin{
     Map map;
     Mission mission;
     Score score;
+    
     Renderer renderer;
 
     public:
@@ -33,8 +34,11 @@ class GameWin{
         //setter
 
         //function
-        void updateScreen();
 
+        //스크린 업데이트
+        void updateScreen();
+        //맵에 오브젝트 삽입
+        void makeObj(Objects& obj);
 
 };
 
