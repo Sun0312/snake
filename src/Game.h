@@ -31,7 +31,7 @@ class Game{
         Game();
 
         void runGame(); //run game function
-        void processInput(char dir);
+        bool processInput(char dir);
         char input(); //recieve user input
 
         // make objects on map

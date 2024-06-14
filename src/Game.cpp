@@ -34,7 +34,7 @@ void Game::runGame() {
         makeObjects();
 
         // process input
-        processInput(dir);
+        gameOver = processInput(dir);
 
         // update window
         gameWin.updateScreen();
@@ -72,7 +72,7 @@ void Game::makeObjects(){
         food.pos.col = c;
         food.pos.row = r;
 
-        renderer.renderObj(food);
+        gameWin.makeObj(food);
     }
 
     // make poison if no poison on map
@@ -85,7 +85,7 @@ void Game::makeObjects(){
         poison.pos.col = c;
         poison.pos.row = c;
 
-        renderer.renderObj(poison);
+        gameWin.makeObj(poison);
     }
 
     // gate
@@ -109,20 +109,40 @@ void Game::makeObjects(){
         gate2.pos.row = r2;
 
         // change map data
-        renderer.renderObj(gate2);
-        renderer.renderObj(gate1);
+        gameWin.makeObj(gate2);
+        gameWin.makeObj(gate1);
     }
 }
 
-void Game::processInput(char dir) {
+bool Game::processInput(char dir) {
     Map &map = gameWin.getMap();
+    vector<vector<char>> *mapData = map.getGrid();
 
-    int snakeHead_r, snakeHead_c;
+    snake.grow(dir);
 
-    snakeHead_c = snake.getPosCol();
-    snakeHead_r = snake.getPosRow();
+    int next_r, next_c;
 
-    if (snakeHead_c)
+    next_c = snake.getPosCol();
+    next_r = snake.getPosRow();
+
+    char mapPosInt = mapData[next_r][next_c];
+
+    if (mapPosInt == '1' || mapPosInt == '6') { // encounter wall -> end game
+        return false;
+    } else if (mapPosInt == '5') { // encounter gate
+        if (next_r == gate1.pos.row) {
+            snake.setHeadPos(gate2.pos.row, gate2.pos.col);
+            snake.move(gate2.getOutDir());
+        } else {
+            snake.setHeadPos(gate1.pos.row, gate1.pos.col);
+            snake.move(gate1.getOutDir());
+        }
+        snake.shrink();
+    } else if (mapPosInt == '4') { // encounter poison
+        snake.shrink();
+    }
+
+    // don't do anything when encountering food ('4')
     
-    snake.move(dir);
+    return true;
 }
