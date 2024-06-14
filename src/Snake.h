@@ -48,6 +48,9 @@ class Snake {
         void move(char dir);
         void grow(char dir);
         void shrink();
+
+        //입력 위치로 head위치 변경
+        void setHeadPos(int r, int c);
         
 };
 

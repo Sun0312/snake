@@ -66,3 +66,7 @@ Snake::~Snake(){};
         length--;        
     }
     
+    void Snake::setHeadPos(int r, int c){
+        snakes.front().pos.row = r;
+        snakes.front().pos.col = c;
+    }
