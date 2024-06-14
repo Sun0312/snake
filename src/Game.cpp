@@ -57,17 +57,8 @@ char Game::input() { //recieve user input
     return direction;
 }
 
-void Game::makeObjects(){
-    int rowLength = map->size();
-    int columnLength = map[0].size();
-    int r, c;
-
-    if (obj->isOnMap() == false) {
-        r = genRand(rowLength);
-        c = genRand(columnLength);
-
-        map[r][c] = obj->symbol;
-    }
+void Game::makeObject(Objects *obj, vector<vector<char>> *map) {
+    
 }
 void Game::makeGate(Gate *gate, vector<vector<char>> *map) {
     int rowLength = map->size();

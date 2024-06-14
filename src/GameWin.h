@@ -15,12 +15,13 @@
 #include "Map.h"
 #include "Mission.h"   
 #include "Score.h"
-
+#include "Renderer.h"
 class GameWin{
 
     Map map;
     Mission mission;
     Score score;
+    Renderer renderer;
 
     public:
         //init
