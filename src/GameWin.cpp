@@ -7,3 +7,5 @@ void GameWin::updateScreen(){
     //미구현renderer.renderMission(mission);
     //미구현renderer.renderScore(score);
 }
+
+Map& GameWin::getMap(){return this->map;}

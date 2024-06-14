@@ -29,7 +29,7 @@ class GameWin{
         
 
         //getter
-
+        Map& getMap();
         //setter
 
         //function
