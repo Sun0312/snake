@@ -21,8 +21,7 @@ class Game{
         Game();
 
         void runGame(); //run game function
-
-
+        void processInput(vector<vector<char>> *map);
         char input(); //recieve user input
 
 

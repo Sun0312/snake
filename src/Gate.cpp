@@ -9,7 +9,7 @@ using namespace std;
 Gate::Gate() {
     this->gateCnt = 0;
 }
-Gate::Gate(vector<vector<int>> &map) {
+Gate::Gate(vector<vector<char>> &map) {
     this->gateCnt = 0;
 
     int rowLength = map.size();

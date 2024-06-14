@@ -22,7 +22,7 @@ class Gate : public Objects{
     public:
         //init
         Gate();
-        Gate(vector<vector<int>> &map);
+        Gate(vector<vector<char>> &map);
 
         //getter
         char getOutDir();

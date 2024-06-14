@@ -2,20 +2,20 @@
 #include "Food.h"
 
 //INIT
-Poison::Poison(){}
+Food::Food(){}
 
-Poison::Poison(int r, int c):Objects(r, c, symbol){ //temp symbol
+Food::Food(int r, int c):Objects(r, c, symbol){ //temp symbol
     foodCnt = 0;
 }
 
 
 //GETTER
 
-int Poison::getFoodCnt(){
+int Food::getFoodCnt(){
     return foodCnt;
 }
 
-void Poison::incFoodCnt(){
+void Food::incFoodCnt(){
     foodCnt++;
 }
 
