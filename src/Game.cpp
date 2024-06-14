@@ -148,9 +148,9 @@ bool Game::processInput(char dir) {
         snake.shrink();
     } else if (mapPosInt == '4') { // encounter poison
         snake.shrink();
-    }
-
-    // don't do anything when encountering food ('4')
-    
+        poison.incPoisonCnt();
+    } else if (mapPosInt == '3') {
+        food.incFoodCnt();
+    }    
     return true;
 }
