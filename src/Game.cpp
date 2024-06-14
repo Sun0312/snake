@@ -37,7 +37,7 @@ void Game::runGame() {
         processInput(dir);
 
         // update window
-        gameWin.update();
+        gameWin.updateScreen();
     }
     // game end page
 }
