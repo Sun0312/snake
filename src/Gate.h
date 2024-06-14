@@ -28,6 +28,9 @@ class Gate : public Objects{
         char getOutDir();
         int getGateCnt();
 
+        //setter
+        void increaseGateCnt();
+
         //operations
         int genRand(int maxLength);
 

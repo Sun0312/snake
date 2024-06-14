@@ -17,17 +17,23 @@ class Game{
 
     private:
         bool gameOver = false;
+        GameWin gameWin;
+        Renderer renderer;
+        Snake snake;
+
+        Poison poison;
+        Food food;
+        Gate gate;
 
     public:
         //init
         Game();
 
         void runGame(); //run game function
-        void processInput(vector<vector<char>> *map);
+        void processInput();
         char input(); //recieve user input
 
-        void makeObject(Objects *obj, vector<vector<char>> *map);
-        void makeGate(Gate  *gate, vector<vector<char>> *map);
+        void makeObjects();
 
         int genRand(int maxLength);
 

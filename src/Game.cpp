@@ -9,7 +9,8 @@
 
 #include <ncurses.h>
 
-Game::Game() {};
+Game::Game() {
+};
 
 int Game::genRand(int maxLength) {
     srand(time(0));
@@ -20,16 +21,6 @@ int Game::genRand(int maxLength) {
 }
 
 void Game::runGame() {
-    GameWin gameWin = GameWin();
-    Renderer renderer = Renderer();
-    Snake snake = Snake(3, 4);
-
-    Map map = Map(50, 50, 10, 10);
-
-    Poison poison;
-    Food food;
-    Gate gate;
-
     // game title page
 
     // game page
@@ -39,18 +30,14 @@ void Game::runGame() {
         // recieve input
         char dir = input();
 
-        vector<vector<char>> *grid = map.getGrid();
-
         // make objects
-        makeObject(&poison, grid);
-        makeObject(&food, grid);
-        makeGate(&gate, grid);
+        makeObjects();
 
         // process input
-        processInput(grid);
+        processInput();
 
         // update window
-        gameWin.update(map);
+        gameWin.update();
     }
 
     // game end page
@@ -70,7 +57,7 @@ char Game::input() { //recieve user input
     return direction;
 }
 
-void Game::makeObject(Objects *obj, vector<vector<char>> *map) {
+void Game::makeObjects(){
     int rowLength = map->size();
     int columnLength = map[0].size();
     int r, c;

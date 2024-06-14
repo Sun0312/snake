@@ -53,3 +53,6 @@ int Gate::genRand(int maxLength) {
 
     return randNum;
 }
+void Gate::increaseGateCnt() {
+    gateCnt++;
+}
