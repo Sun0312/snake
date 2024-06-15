@@ -12,4 +12,5 @@ int main(){
     game.runGame();
 
     getch();
+    endwin();
 }

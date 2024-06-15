@@ -23,7 +23,7 @@ void Game::runGame(){
 
     refresh();
     // game page
-
+    werase(gameWin.getMap().getWin());
     gameOver = false;
 
     while(!gameOver) {
