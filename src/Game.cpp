@@ -28,7 +28,9 @@ void Game::runGame(){
     gameOver = false;
 
     while(!gameOver) {
-        vector<vector<char>>* grid = gameWin.getMap().getGrid();
+        vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
+        vector<vector<char>> grid_copy = *init_grid;
+        vector<vector<char>>* grid = &grid_copy;
 
         // recieve input
         char dir = input();
@@ -141,7 +143,6 @@ void Game::makeObjects(vector<vector<char>>* grid){
     gameWin.makeObj(grid, gate2);
     gameWin.makeObj(grid, gate1);
 
-    
 }
 
 //유저 Input에 따른 처리과정
