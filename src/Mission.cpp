@@ -16,6 +16,9 @@ void Mission::initializeMissions() {
 
     // 세 번째 미션 데이터
     missions.push_back({20, 8, 4, 3});
+
+    // 네 번째 미션 데이터
+    missions.push_back({25, 10, 5, 4});
 }
 
 int Mission::getCurrentMissionIndex() const {
