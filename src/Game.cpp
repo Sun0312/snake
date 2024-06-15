@@ -34,7 +34,7 @@ void Game::runGame(){
         if (dir == 'x') break;
         wrefresh(gameWin.getMap().getWin());
 
-        mvaddch(0, 30, dir);
+        mvaddch(0, 70, dir);
         //맵의 복사본이 아닌 Grid의 복사본을 생성하여 수정후 넘겨주자!
         // make objects
         // makeObjects(cmap);          //cmap에 현재 Objects의 위치에 따라서 배치

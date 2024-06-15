@@ -74,11 +74,8 @@ void Renderer::renderMap(const Map& map, vector<vector<char>>* mapData)const{
 
             }
             wattron(win, COLOR_PAIR(pair));
-
-            // 각 셀을 가로로 세 번 출력
-            for (int i = 0; i < 3; i++) {
-                mvwaddch(win, y, 3 * x + i, ' ');  // x 위치를 3배로 확장하여 출력
-            }
+            
+            mvwaddstr(win,y,3*x,"   ");
             wattroff(win, COLOR_PAIR(pair));
         }
     }
