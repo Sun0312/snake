@@ -22,6 +22,7 @@ private:
 
 public:
     Map(int width, int height, int br, int bc);
+    Map(Map& copy);
     void initializeMaps();             // 맵 데이터 초기화
     int getCMI();                      //현재 맵 인덱스
     int getCMI()const;

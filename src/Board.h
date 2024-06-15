@@ -10,6 +10,7 @@ class Board{
         //init
         Board();
         Board(int width, int height, int begin_r, int begin_c);
+        Board(WINDOW* win);
 
         //Getter
         WINDOW* getWin();

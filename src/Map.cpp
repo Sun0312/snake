@@ -9,6 +9,9 @@ using namespace std;
 Map::Map(int width, int height, int br, int bc) : Board(width, height, br, bc), currentMapIndex(0) {
     initializeMaps(); // 맵 데이터 초기화
 }
+Map::Map(Map& copy) : Board(copy.win) {
+
+}
 
 void Map::initializeMaps() {
     // 첫 번째 맵 데이터

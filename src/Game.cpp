@@ -18,13 +18,11 @@ int Game::genRand(int minlength, int maxLength) {
 void Game::runGame(){
     // game title page
     refresh();
-    mvaddstr(5, 30, "run game called");
     // game page
 
     gameOver = false;
     while(!gameOver) {
         wrefresh(gameWin.getMap().getWin());
-        mvaddstr(10, 30, "inside while loop");
 
         // recieve input
         char dir = input();
@@ -33,15 +31,15 @@ void Game::runGame(){
         mvaddch(0, 30, dir);
 
         // make Copy of map
-        //Map cmap(gameWin.getMap()); //현재 맵의 복사본 cmap생성
+        Map cmap(gameWin.getMap()); //현재 맵의 복사본 cmap생성
         // make objects
-        //makeObjects(cmap);          //cmap에 현재 Objects의 위치에 따라서 배치
+        // makeObjects(cmap);          //cmap에 현재 Objects의 위치에 따라서 배치
 
         // process input
         // gameOver = processInput(dir);
 
         // update window
-        //gameWin.updateScreen(cmap);
+        // gameWin.updateScreen(cmap);
         timeout(2000);
     }
     // game end page
@@ -52,7 +50,6 @@ void Game::runGame(){
 
 //유저입력을 방향으로 변환
 char Game::input() { //recieve user input
-    mvaddstr(5, 30, "waiting for input");
     char input_direction = getch();
 
     // unless user goes opposite to current direction, change current direction to user input
