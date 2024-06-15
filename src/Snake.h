@@ -34,8 +34,7 @@ class Snake {
     public:
     deque<Objects> snakes;  // head + body 를 저장하는 queue
         //init
-        Snake();
-        Snake(int r, int c, char dir = 'r'); //HEAD의 시작좌표, 방향지정
+        Snake(int r = 3, int c = 3, char dir = 'r'); //HEAD의 시작좌표, 방향지정
         ~Snake();
         //Getter
         int getLength();

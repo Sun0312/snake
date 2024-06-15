@@ -9,12 +9,11 @@ SnakeBody::SnakeBody(int r, int c):Objects(r,c,symbol){
 
 //SNAKE
 
-Snake::Snake(){};
 Snake::Snake(int r, int c, char dir){
     this->dir = dir;
-    snakes.emplace_back(SnakeBody(r,c - 1*width)); //칸이 줄보다 작아서 2배수or3배수될듯...
-    snakes.emplace_back(SnakeBody(r,c - 2*width));
-    snakes.emplace_front(SnakeBody(r,c));  //헤드
+    snakes.emplace_back(SnakeBody(r,c)); //칸이 줄보다 작아서 2배수or3배수될듯...
+    snakes.emplace_back(SnakeBody(r,c+1));
+    snakes.emplace_front(SnakeBody(r,c+2));  //헤드
 }
 
 Snake::~Snake(){};
