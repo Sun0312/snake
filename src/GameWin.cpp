@@ -8,7 +8,10 @@ GameWin::GameWin():map(22,66,0,0),mission(10,30,0,70),score(10,30,11,70),rendere
 void GameWin::updateScreen(const Map& map, vector<vector<char>>* mapData){
     renderer.renderMap(map, mapData);
     renderer.renderMission(mission,score);
-   
+}
+//update score
+void GameWin::updateScore(Snake &snake, Food &food, Poison& poison, Gate &gate1, Gate &gate2) {
+    score.updateScore(snake, food, poison, gate1, gate2);
 }
 
 Map& GameWin::getMap(){return this->map;}

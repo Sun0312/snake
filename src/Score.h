@@ -20,7 +20,7 @@ private:
 public:
     Score();
     Score(int width,int height,int br,int bc);
-    void updateScore( Snake& snake, Food& food, Poison& poison,  Gate& gate);
+    void updateScore( Snake& snake, Food& food, Poison& poison,  Gate& gate1, Gate &gate2);
     void displayScore() const;
     
     int getSnake();

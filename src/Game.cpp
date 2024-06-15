@@ -47,7 +47,8 @@ void Game::runGame(){
         gameWin.makeSnake(snake);
 
         // update window
-        gameWin.updateScreen(gameWin.getMap(), gameWin.getMap().getGrid());
+        gameWin.updateScore(snake, food, poison, gate1, gate2);
+        gameWin.updateScreen(gameWin.getMap(), grid);
         timeout(2000);
     }
     // game end page

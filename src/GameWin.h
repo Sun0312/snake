@@ -35,6 +35,7 @@ class GameWin{
         //function
 
         //넘겨받은 스크린 업데이트
+        void updateScore(Snake &snake, Food &food, Poison &poison, Gate &gate1, Gate &gate2);
         void updateScreen(const Map&, vector<vector<char>>* mapData);
         //맵에 오브젝트 삽입
         void makeObj(vector<vector<char>>* grid, Objects& obj);
