@@ -1,7 +1,7 @@
 #include "GameWin.h"
 
 GameWin::GameWin():map(20,60,0,0),mission(5,15,0,65),score(5,15,7,65),renderer(){
-
+    
 }
 
 //맵 객체의 맵을 그려줌

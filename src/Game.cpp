@@ -1,8 +1,5 @@
 #include "Game.h"
 
-#include <iostream>
-using namespace std;
-
 Game::Game() : direction('u') {}
 
 //(int 최소값, int 최대값)사이의 랜덤 정수 반환
@@ -26,6 +23,7 @@ void Game::runGame(){
 
         // recieve input
         char dir = input();
+        if (dir == 'x') break;
         wrefresh(gameWin.getMap().getWin());
 
         mvaddch(0, 30, dir);
@@ -56,16 +54,16 @@ char Game::input() { //recieve user input
     switch (input_direction)
     {
     case (char)KEY_UP:
-        if(direction != 'd') direction = 'u';
+        direction = (direction != 'd') ? 'u' : 'x';
         break;
     case (char)KEY_DOWN:
-        if(direction != 'u') direction = 'd';
+        direction = (direction != 'u') ? 'd' : 'x';
         break;
     case (char)KEY_RIGHT:
-        if(direction != 'l') direction = 'r';
+        direction = (direction != 'l') ? 'r' : 'x';
         break;
     case (char)KEY_LEFT:
-        if(direction != 'r') direction = 'l';
+        direction = (direction != 'r') ? 'l' : 'x';
         break;
     
     default:
