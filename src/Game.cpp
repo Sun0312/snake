@@ -40,7 +40,7 @@ void Game::runGame(){
         makeObjects(gameWin.getMap().getGrid());          //cmap에 현재 Objects의 위치에 따라서 배치
 
         // process input
-        gameOver = processInput(dir);
+        // gameOver = processInput(dir);
         gameWin.makeSnake(snake);
 
         // update window
