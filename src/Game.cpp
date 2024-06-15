@@ -3,7 +3,7 @@
 #include <iostream>
 using namespace std;
 
-Game::Game() : direction('r') {}
+Game::Game() : direction('u') {}
 
 //(int 최소값, int 최대값)사이의 랜덤 정수 반환
 int Game::genRand(int minlength, int maxLength) {
@@ -17,43 +17,62 @@ int Game::genRand(int minlength, int maxLength) {
 //게임 실행 함수
 void Game::runGame(){
     // game title page
-
-    cout << "Begin runGame()";
+    refresh();
+    mvaddstr(5, 30, "run game called");
     // game page
 
-    while(gameOver != false) {
+    gameOver = false;
+    while(!gameOver) {
+        wrefresh(gameWin.getMap().getWin());
+        mvaddstr(10, 30, "inside while loop");
 
         // recieve input
         char dir = input();
+        wrefresh(gameWin.getMap().getWin());
+
+        mvaddch(0, 30, dir);
+
         // make Copy of map
-        Map cmap(gameWin.getMap()); //현재 맵의 복사본 cmap생성
+        //Map cmap(gameWin.getMap()); //현재 맵의 복사본 cmap생성
         // make objects
-        makeObjects(cmap);          //cmap에 현재 Objects의 위치에 따라서 배치
+        //makeObjects(cmap);          //cmap에 현재 Objects의 위치에 따라서 배치
 
         // process input
-        gameOver = processInput(dir);
+        // gameOver = processInput(dir);
 
         // update window
-        gameWin.updateScreen(cmap);
+        //gameWin.updateScreen(cmap);
+        timeout(2000);
     }
     // game end page
 
+    mvaddstr(10, 30, "finishing game");
     endwin();
 }
 
 //유저입력을 방향으로 변환
 char Game::input() { //recieve user input
+    mvaddstr(5, 30, "waiting for input");
     char input_direction = getch();
 
     // unless user goes opposite to current direction, change current direction to user input
-    if (input_direction == KEY_UP && direction != 'd') {
-        direction = 'u';
-    } else if (input_direction == KEY_DOWN && direction != 'u') {
-        direction = 'd';
-    } else if (input_direction == KEY_LEFT && direction != 'r') {
-        direction = 'l';
-    } else if (input_direction == KEY_RIGHT && direction != 'l') {
-        direction = 'r';
+    switch (input_direction)
+    {
+    case (char)KEY_UP:
+        if(direction != 'd') direction = 'u';
+        break;
+    case (char)KEY_DOWN:
+        if(direction != 'u') direction = 'd';
+        break;
+    case (char)KEY_RIGHT:
+        if(direction != 'l') direction = 'r';
+        break;
+    case (char)KEY_LEFT:
+        if(direction != 'r') direction = 'l';
+        break;
+    
+    default:
+        break;
     }
     return direction;
 }
@@ -120,6 +139,7 @@ void Game::makeObjects(Map& cmap){
 
 //유저 Input에 따른 처리과정
 bool Game::processInput(char dir) {
+    mvaddstr(30, 30, "processing input");
     Map &map = gameWin.getMap();
     vector<vector<char>> *pmap = map.getGrid();
     vector<vector<char>> mapData = *pmap;
@@ -156,13 +176,14 @@ bool Game::processInput(char dir) {
 
 void Game::initGame(){
     initscr();
+    keypad(stdscr, TRUE);
     noecho();
     curs_set(0);
 
     box(gameWin.getMap().getWin(),'*','*');
     wrefresh(gameWin.getMap().getWin());
 
-    cout << "game initialized";
+    mvaddstr(10,30, "game initialized");
     
     getch();
 }

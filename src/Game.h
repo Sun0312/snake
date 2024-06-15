@@ -19,7 +19,7 @@
 class Game{
 
     private:
-        bool gameOver = false;
+        bool gameOver;
         GameWin gameWin;
         Renderer renderer;
         Snake snake;
@@ -28,6 +28,8 @@ class Game{
         Food food;
         Gate gate1;
         Gate gate2;
+
+        char direction;
 
     public:
         //init
