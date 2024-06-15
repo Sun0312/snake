@@ -1,15 +1,20 @@
 #include"Renderer.h"
 #include <string>
 #include <cstring>
-
+#include <iostream>
 
 Renderer::Renderer(){}
 
 void Renderer::renderObj(vector<vector<char>>* grid, Objects &obj)const{
+    if (grid == nullptr) {
+        
+        return;
+    }
     obj.OnMap = true;
     int r = obj.pos.row;
     int c = obj.pos.col;
-    // (*grid)[r][c] = (char)obj.symbol;   //해당위치에 바로 대입하려면 Objects의 위치가 변경될때 유효성검사가 필요함
+    vector<vector<char>> Grid = *grid;
+    Grid[r][c] = obj.symbol;   //해당위치에 바로 대입하려면 Objects의 위치가 변경될때 유효성검사가 필요함
 }
 
 void Renderer::renderSnake(vector<vector<char>>* grid, Snake &snake)const{

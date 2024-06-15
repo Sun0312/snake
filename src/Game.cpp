@@ -133,7 +133,7 @@ void Game::makeObjects(vector<vector<char>>* grid){
     gate1.pos.row = r1;
     gate2.pos.col = c2;
     gate2.pos.row = r2;
-
+    
     // change map data
     gameWin.makeObj(grid, poison);
     gameWin.makeObj(grid, food);
