@@ -29,7 +29,7 @@ void Game::runGame(){
         mvaddch(0, 30, dir);
 
         // make Copy of map
-        Map cmap(gameWin.getMap()); //현재 맵의 복사본 cmap생성
+        // Map cmap(gameWin.getMap()); //현재 맵의 복사본 cmap생성
         // make objects
         // makeObjects(cmap);          //cmap에 현재 Objects의 위치에 따라서 배치
 
@@ -171,6 +171,16 @@ bool Game::processInput(char dir) {
 
 void Game::initGame(){
     initscr();
+
+    GameWin gameWin;
+    Renderer renderer;
+    Snake snake;
+
+    Poison poison;
+    Food food;
+    Gate gate1;
+    Gate gate2;
+
     keypad(stdscr, TRUE);
     noecho();
     curs_set(0);
@@ -178,7 +188,7 @@ void Game::initGame(){
     box(gameWin.getMap().getWin(),'*','*');
     wrefresh(gameWin.getMap().getWin());
 
-    mvaddstr(10,30, "game initialized");
+    mvaddstr(15,30, "game initialized");
     
     getch();
 }
