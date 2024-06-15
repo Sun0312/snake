@@ -1,5 +1,7 @@
 #include"Renderer.h"
 #include <string>
+#include <cstring>
+
 
 Renderer::Renderer(){}
 
@@ -29,8 +31,9 @@ void Renderer::renderSnake(Map& map, Snake &snake)const{
 }
 
 
-void Renderer::renderMission(const Mission& mission, const Score& score)const{
-        //Snake 길이, Apple 먹은 개수, Poison 먹은 개수, Gate 통과 횟수
+void Renderer::renderMission(const Mission& mission, Score& score)const{
+        
+        //Snake 길이, Food 먹은 개수, Poison 먹은 개수, Gate 통과 횟수
         vector<int> missions = mission.getCurrentMission();
         int snakemission = missions[0];
         int Foodmission = missions[1];
@@ -40,21 +43,46 @@ void Renderer::renderMission(const Mission& mission, const Score& score)const{
         int snakeScore = score.getSnake();
         int FoodScore = score.getFood();
         int PoisonScore = score.getPoison();
-        int gateScore = score
+        int gateScore = score.getGate();
 
-
+      
         WINDOW* win = mission.getWin();
+       
+        box(win, '*', '*');
+     
+        string lengthdata = "Length :";
+        lengthdata += std::to_string(snakeScore);
+        lengthdata += " / ";
+        lengthdata += std::to_string(snakemission);
+        char chars[1000];
+        std::strcpy(chars,lengthdata.c_str());
+        mvwaddstr(win,2,5, chars);
+        
+        string foodData = "Food :";
+        foodData += std::to_string(FoodScore);
+        foodData += " / ";
+        foodData += std::to_string(Foodmission);
+        char charss[100];
+        std::strcpy(charss, foodData.c_str());
+        mvwaddstr(win,3,5, charss);
 
-        mvaddstr(2,5,"Length :");
-        mvaddch(2,5, snakemission + '0');
+        string poData = "Poison:";
+        poData += std::to_string(PoisonScore);
+        poData += " / ";
+        poData += std::to_string(PoisonScore);
+        char charssss[100];
+        std::strcpy(charssss, poData.c_str());
+        mvwaddstr(win,4,5, charssss);
 
-        mvaddstr(3,5,"Food :");
-        mvaddch(3,5, snakemission + '0');
-        mvaddstr(2,5,"Length :");
-        mvaddch(2,5, snakemission + '0');
-        mvaddstr(2,5,"Length :");
-        mvaddch(2,5, snakemission + '0');
-
+        string GateData = "Gate:";
+        GateData += std::to_string(gateScore);
+        GateData += " / ";
+        GateData += std::to_string(gateScore);
+        char charsss[100];
+        std::strcpy(charsss, GateData.c_str());
+        mvwaddstr(win,5,5, charsss);
+      
+        wrefresh(win);
 }
 
 

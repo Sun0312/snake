@@ -21,7 +21,7 @@ class Renderer{
         
         void renderMap(const Map &map, vector<vector<char>>* mapData)const;
 
-        void renderMission(const Mission& mission, const Score& score)const;
+        void renderMission(const Mission& mission, Score& score)const;
         void renderScore(const Score& score)const;
 
 };
