@@ -40,7 +40,7 @@ class Game{
         char input(); //recieve user input
 
         // make objects on map
-        void makeObjects(Map& cmap);
+        void makeObjects(vector<vector<char>>* grid);
 
         // generate random number
         int genRand(int minLength, int maxLength);
