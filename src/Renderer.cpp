@@ -29,7 +29,34 @@ void Renderer::renderSnake(Map& map, Snake &snake)const{
 }
 
 
-void Renderer::renderMission(const Mission& mission)const{
+void Renderer::renderMission(const Mission& mission, const Score& score)const{
+        //Snake 길이, Apple 먹은 개수, Poison 먹은 개수, Gate 통과 횟수
+        vector<int> missions = mission.getCurrentMission();
+        int snakemission = missions[0];
+        int Foodmission = missions[1];
+        int Poisonmission = missions[2];
+        int gatemission = missions[3];
+
+        int snakeScore = score.getSnake();
+        int FoodScore = score.get
+
+        WINDOW* win = mission.getWin();
+
+        mvaddstr(2,5,"Length :");
+        mvaddch(2,5, snakemission + '0');
+
+        mvaddstr(3,5,"Food :");
+        mvaddch(3,5, snakemission + '0');
+        mvaddstr(2,5,"Length :");
+        mvaddch(2,5, snakemission + '0');
+        mvaddstr(2,5,"Length :");
+        mvaddch(2,5, snakemission + '0');
+
+}
+
+
+
+void Renderer::renderScore(const Score& score)const{
     
 }
 

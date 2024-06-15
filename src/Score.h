@@ -22,6 +22,11 @@ public:
     Score(int width,int height,int br,int bc);
     void updateScore( Snake& snake, Food& food, Poison& poison,  Gate& gate);
     void displayScore() const;
+    
+    int getSnake();
+    int getPoison();
+    int getGate();
+    int getFood();
 };
 
 

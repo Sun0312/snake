@@ -22,7 +22,10 @@ void Score::displayScore() const{
 }
     
 
-
+int Score::getFood(){return foodcount;}
+int Score::getSnake(){return snakecount;}
+int Score::getPoison(){return poisoncount;}
+int Score::getGate(){return gatecount;}
 
 
 
