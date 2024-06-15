@@ -21,6 +21,7 @@ class Game{
     private:
         bool gameOver = false;
         GameWin gameWin;
+        Board myMap;
         Renderer renderer;
         Snake snake;
 

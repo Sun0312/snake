@@ -157,5 +157,4 @@ void Game::initGame(){
     
     getch();
     endwin();
-    return 0;
 }
