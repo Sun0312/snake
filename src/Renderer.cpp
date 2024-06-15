@@ -29,7 +29,7 @@ void Renderer::renderSnake(Map& map, Snake &snake)const{
 }
 
 
-void Renderer::renderBoard(const Board &board)const{
+void Renderer::renderMission(const Mission& mission)const{
     
 }
 
