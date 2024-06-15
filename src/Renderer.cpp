@@ -33,9 +33,9 @@ void Renderer::renderBoard(const Board &board)const{
     
 }
 
-void Renderer::renderMap(const Map& map)const{
-    vector<vector<char>> maps = map.getGrid();
+void Renderer::renderMap(const Map& map, vector<vector<char>>* mapData)const{
     WINDOW* win = map.getWin();
+    vector<vector<char>>maps = *mapData;
     start_color();
     init_pair(1, COLOR_WHITE, COLOR_BLACK);  // 글자: 흰색, 배경: 검은색
     init_pair(2, COLOR_BLACK, COLOR_WHITE);  // 글자: 검은색, 배경: 흰색

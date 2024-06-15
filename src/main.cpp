@@ -1,11 +1,15 @@
 #include "Game.h"
 
 int main(){
-    Game* game = new Game();
+    initscr();
+    keypad(stdscr, TRUE);
+    noecho();
+    curs_set(0);
+    Game game;
 
-    game->initGame();
+    game.initGame();
 
-    game->runGame();
+    game.runGame();
 
     getch();
 }

@@ -5,8 +5,8 @@ GameWin::GameWin():map(20,60,0,0),mission(5,15,0,65),score(5,15,7,65),renderer()
 }
 
 //맵 객체의 맵을 그려줌
-void GameWin::updateScreen(const Map& omap){
-    renderer.renderMap(omap);
+void GameWin::updateScreen(const Map& map, vector<vector<char>>* mapData){
+    renderer.renderMap(map, mapData);
     //renderer.renderMission(mission);
     //renderer.renderScore(score);
 }

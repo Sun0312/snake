@@ -1,6 +1,9 @@
 #include "Game.h"
 
-Game::Game() : direction('u') {}
+Game::Game() : direction('u') {
+    
+
+}
 
 //(int 최소값, int 최대값)사이의 랜덤 정수 반환
 int Game::genRand(int minlength, int maxLength) {
@@ -14,7 +17,7 @@ int Game::genRand(int minlength, int maxLength) {
 //게임 실행 함수
 void Game::runGame(){
     // game title page
-    gameWin.updateScreen(gameWin.getMap());
+    gameWin.updateScreen(gameWin.getMap(), gameWin.getMap().getGrid());
     box(gameWin.getMap().getWin(),'*','*');
     wrefresh(gameWin.getMap().getWin());
 
@@ -22,8 +25,6 @@ void Game::runGame(){
     // game page
 
     gameOver = false;
-
-    Map cmap(gameWin.getMap());
 
     while(!gameOver) {
         wrefresh(gameWin.getMap().getWin());
@@ -34,10 +35,7 @@ void Game::runGame(){
         wrefresh(gameWin.getMap().getWin());
 
         mvaddch(0, 30, dir);
-
-        // make Copy of map    
-        cmap.~Map();
-        new (&cmap) Map(gameWin.getMap()); //현재 맵의 복사본 cmap생성
+        //맵의 복사본이 아닌 Grid의 복사본을 생성하여 수정후 넘겨주자!
         // make objects
         // makeObjects(cmap);          //cmap에 현재 Objects의 위치에 따라서 배치
 
@@ -45,7 +43,7 @@ void Game::runGame(){
         // gameOver = processInput(dir);
 
         // update window
-        gameWin.updateScreen(cmap);
+        gameWin.updateScreen(gameWin.getMap(),gameWin.getMap().getGrid());
         timeout(2000);
     }
     // game end page
@@ -178,15 +176,7 @@ bool Game::processInput(char dir) {
 }
 
 void Game::initGame(){
-    initscr();
-    keypad(stdscr, TRUE);
-    noecho();
-    curs_set(0);
-
-    gameWin.~GameWin();
-    new (&gameWin) GameWin();
-    renderer.~Renderer();
-    new (&renderer) Renderer();
+    
 
     mvaddstr(15,30, "game initialized");
     
