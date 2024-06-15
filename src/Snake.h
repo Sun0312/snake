@@ -42,6 +42,7 @@ class Snake {
         char getDir();
         int getPosRow();
         int getPosCol();
+        deque<Objects> getBody();
     
         //Setter
         void setDir(char dir);

@@ -155,6 +155,13 @@ bool Game::processInput(char dir) {
 
     char mapPosInt = mapData[next_r][next_c];
 
+    // check if next position is snake
+    for (Objects snakeBody : snake.getBody()) {
+        if (snakeBody.pos.col == next_c || snakeBody.pos.row == next_r) {
+            return false;
+        }
+    }
+
     if (mapPosInt == '1' || mapPosInt == '6') { // encounter wall -> end game
         return false;
     } else if (mapPosInt == '5') { // encounter gate

@@ -35,6 +35,9 @@ Snake::~Snake(){};
     int Snake::getPosCol() {
         return snakes.front().pos.col;
     }
+    deque<Objects> Snake::getBody() {
+        return snakes;
+    }
 
     //SNAKE : SETTER
 
