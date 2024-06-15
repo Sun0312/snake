@@ -37,7 +37,7 @@ class GameWin{
         //넘겨받은 스크린 업데이트
         void updateScreen(const Map&, vector<vector<char>>* mapData);
         //맵에 오브젝트 삽입
-        void makeObj(Objects& obj);
+        void makeObj(vector<vector<char>>* grid, Objects& obj);
         void makeSnake(Snake& snake);
 
 };

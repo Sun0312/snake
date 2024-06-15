@@ -13,9 +13,9 @@ void GameWin::updateScreen(const Map& map, vector<vector<char>>* mapData){
 
 Map& GameWin::getMap(){return this->map;}
 
-void GameWin::makeObj(Objects& obj){
-    renderer.renderObj(map,obj);
+void GameWin::makeObj(vector<vector<char>>* grid, Objects& obj){
+    renderer.renderObj(grid,obj);
 }
 void GameWin::makeSnake(Snake& snake) {
-    renderer.renderSnake(map, snake);
+    renderer.renderSnake(map.getGrid(), snake);
 }

@@ -16,8 +16,8 @@ class Renderer{
 
         Renderer();
 
-        void renderObj(Map& map, Objects &obj)const;
-        void renderSnake(Map& map, Snake &snake)const;
+        void renderObj(vector<vector<char>>* grid, Objects &obj)const;
+        void renderSnake(vector<vector<char>>* grid, Snake &snake)const;
         
         void renderMap(const Map &map, vector<vector<char>>* mapData)const;
 

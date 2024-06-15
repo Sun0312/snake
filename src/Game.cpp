@@ -37,14 +37,14 @@ void Game::runGame(){
         mvaddch(0, 70, dir);
         //맵의 복사본이 아닌 Grid의 복사본을 생성하여 수정후 넘겨주자!
         // make objects
-        makeObjects(gameWin.getMap().getGrid());          //cmap에 현재 Objects의 위치에 따라서 배치
+        makeObjects(grid);          //cmap에 현재 Objects의 위치에 따라서 배치
 
         // process input
         // gameOver = processInput(dir);
         gameWin.makeSnake(snake);
 
         // update window
-        gameWin.updateScreen(gameWin.getMap(),gameWin.getMap().getGrid());
+        gameWin.updateScreen(gameWin.getMap(), gameWin.getMap().getGrid());
         timeout(2000);
     }
     // game end page
@@ -87,35 +87,35 @@ void Game::makeObjects(vector<vector<char>>* grid){
     int rowLength = mapData->size();
     int columnLength = mapData[0].size();
 
+    int f_r = food.pos.row;
+    int f_c = food.pos.col;
+    int p_r = poison.pos.row;
+    int p_c = poison.pos.col;
+
     // make food if no food on map
     if (food.isOnMap() == false) {
-        int r, c;
-
-        r = genRand(1, rowLength);
-        c = genRand(1, columnLength);
-
-        food.pos.col = c;
-        food.pos.row = r;
-
-        gameWin.makeObj(food);
+        f_r = genRand(1, rowLength);
+        f_c = genRand(1, columnLength);
     }
 
     // make poison if no poison on map
     if (poison.isOnMap() == false) {
-        int r, c;
+        p_r = genRand(1, rowLength-1);
+        p_c = genRand(1, columnLength-1);
 
-        r = genRand(1, rowLength-1);
-        c = genRand(1, columnLength-1);
-
-        poison.pos.col = c;
-        poison.pos.row = c;
-
-        gameWin.makeObj(poison);
     }
 
+    food.pos.col = f_c;
+    food.pos.row = f_r;
+    poison.pos.col = p_c;
+    poison.pos.row = p_r;
+
     // gate
+    int r1 = gate1.pos.row;
+    int c1 = gate1.pos.col;
+    int r2 = gate2.pos.row;
+    int c2 = gate2.pos.row;
     if(gate1.isOnMap() == false) {
-        int r1, c1, r2, c2;
 
         // change position until not in immune wall
         while (r1 == c1 && r1 == rowLength || r1 == c1 && c1 == columnLength) {
@@ -126,17 +126,19 @@ void Game::makeObjects(vector<vector<char>>* grid){
             r2 = genRand(0, rowLength);
             c2 = genRand(0, columnLength);
         }
-
-        // set gate position
-        gate1.pos.col = c1;
-        gate1.pos.row = r1;
-        gate2.pos.col = c2;
-        gate2.pos.row = r2;
-
-        // change map data
-        gameWin.makeObj(gate2);
-        gameWin.makeObj(gate1);
     }
+
+    // set gate position
+    gate1.pos.col = c1;
+    gate1.pos.row = r1;
+    gate2.pos.col = c2;
+    gate2.pos.row = r2;
+
+    // change map data
+    gameWin.makeObj(grid, poison);
+    gameWin.makeObj(grid, food);
+    gameWin.makeObj(grid, gate2);
+    gameWin.makeObj(grid, gate1);
 
     
 }
@@ -179,8 +181,10 @@ bool Game::processInput(char dir) {
     } else if (mapPosInt == '4') { // encounter poison
         snake.shrink();
         poison.incPoisonCnt();
+        poison.OnMap = false;
     } else if (mapPosInt == '3') {
         food.incFoodCnt();
+        food.OnMap = false;
     }    
     return true;
 }
@@ -189,6 +193,5 @@ void Game::initGame(){
     
 
     mvaddstr(15,30, "game initialized");
-    
-    getch();
+
 }
