@@ -3,7 +3,7 @@
 
 int Food::foodCnt = 0;
 //INIT
-Food::Food(){}
+Food::Food():Objects(0, 0, symbol){}
 
 
 Food::Food(int r, int c):Objects(r, c, symbol){ //temp symbol
