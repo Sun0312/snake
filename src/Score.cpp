@@ -11,15 +11,6 @@ void Score::updateScore(Snake &snake, Food&food, Poison& poison, Gate&gate) {
         poisoncount= poison.getPoisonCnt();
         gatecount= gate.getGateCnt();
 }
-
-
-void Score::displayScore() const{
-    mvwprintw(win, 1, 1, "Score Board");
-    mvwprintw(win, 2, 1, "B: %d/%d", snakecount,maxlength);
-    mvwprintw(win, 3, 1, "+: %d", foodcount);
-    mvwprintw(win, 4, 1, "-: %d", poisoncount);
-    mvwprintw(win, 5, 1, "G: %d", gatecount);
-}
     
 
 int Score::getFood(){return foodcount;}

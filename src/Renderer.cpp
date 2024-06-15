@@ -38,7 +38,10 @@ void Renderer::renderMission(const Mission& mission, const Score& score)const{
         int gatemission = missions[3];
 
         int snakeScore = score.getSnake();
-        int FoodScore = score.get
+        int FoodScore = score.getFood();
+        int PoisonScore = score.getPoison();
+        int gateScore = score
+
 
         WINDOW* win = mission.getWin();
 
