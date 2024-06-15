@@ -14,10 +14,17 @@ int Game::genRand(int minlength, int maxLength) {
 //게임 실행 함수
 void Game::runGame(){
     // game title page
+    gameWin.updateScreen(gameWin.getMap());
+    box(gameWin.getMap().getWin(),'*','*');
+    wrefresh(gameWin.getMap().getWin());
+
     refresh();
     // game page
 
     gameOver = false;
+
+    Map cmap(gameWin.getMap());
+
     while(!gameOver) {
         wrefresh(gameWin.getMap().getWin());
 
@@ -28,8 +35,9 @@ void Game::runGame(){
 
         mvaddch(0, 30, dir);
 
-        // make Copy of map
-        // Map cmap(gameWin.getMap()); //현재 맵의 복사본 cmap생성
+        // make Copy of map    
+        cmap.~Map();
+        new (&cmap) Map(gameWin.getMap()); //현재 맵의 복사본 cmap생성
         // make objects
         // makeObjects(cmap);          //cmap에 현재 Objects의 위치에 따라서 배치
 
@@ -37,7 +45,7 @@ void Game::runGame(){
         // gameOver = processInput(dir);
 
         // update window
-        // gameWin.updateScreen(cmap);
+        gameWin.updateScreen(cmap);
         timeout(2000);
     }
     // game end page
@@ -171,22 +179,14 @@ bool Game::processInput(char dir) {
 
 void Game::initGame(){
     initscr();
-
-    GameWin gameWin;
-    Renderer renderer;
-    Snake snake;
-
-    Poison poison;
-    Food food;
-    Gate gate1;
-    Gate gate2;
-
     keypad(stdscr, TRUE);
     noecho();
     curs_set(0);
 
-    box(gameWin.getMap().getWin(),'*','*');
-    wrefresh(gameWin.getMap().getWin());
+    gameWin.~GameWin();
+    new (&gameWin) GameWin();
+    renderer.~Renderer();
+    new (&renderer) Renderer();
 
     mvaddstr(15,30, "game initialized");
     
