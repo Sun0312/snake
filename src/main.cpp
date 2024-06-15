@@ -5,7 +5,7 @@ int main(){
 
     game->initGame();
 
-    (*game).runGame();
+    game->runGame();
 
     getch();
 }

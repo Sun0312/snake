@@ -1,6 +1,9 @@
 #include "Game.h"
 
-Game::Game(){}
+#include <iostream>
+using namespace std;
+
+Game::Game() : direction('r') {}
 
 //(int 최소값, int 최대값)사이의 랜덤 정수 반환
 int Game::genRand(int minlength, int maxLength) {
@@ -15,6 +18,7 @@ int Game::genRand(int minlength, int maxLength) {
 void Game::runGame(){
     // game title page
 
+    cout << "Begin runGame()";
     // game page
 
     while(gameOver != false) {
@@ -33,20 +37,22 @@ void Game::runGame(){
         gameWin.updateScreen(cmap);
     }
     // game end page
+
+    endwin();
 }
 
 //유저입력을 방향으로 변환
 char Game::input() { //recieve user input
-    char direction = 'r';
     char input_direction = getch();
 
-    if (input_direction == KEY_UP) {
+    // unless user goes opposite to current direction, change current direction to user input
+    if (input_direction == KEY_UP && direction != 'd') {
         direction = 'u';
-    } else if (input_direction == KEY_DOWN) {
+    } else if (input_direction == KEY_DOWN && direction != 'u') {
         direction = 'd';
-    } else if (input_direction == KEY_LEFT) {
+    } else if (input_direction == KEY_LEFT && direction != 'r') {
         direction = 'l';
-    } else if (input_direction == KEY_RIGHT) {
+    } else if (input_direction == KEY_RIGHT && direction != 'l') {
         direction = 'r';
     }
     return direction;
@@ -152,11 +158,11 @@ void Game::initGame(){
     initscr();
     noecho();
     curs_set(0);
-    myMap = gameWin.getMap();
-    
+
     box(gameWin.getMap().getWin(),'*','*');
-    wrefresh(myMap.getWin());
+    wrefresh(gameWin.getMap().getWin());
+
+    cout << "game initialized";
     
     getch();
-    endwin();
 }
