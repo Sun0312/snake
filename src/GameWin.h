@@ -38,6 +38,7 @@ class GameWin{
         void updateScreen(const Map&, vector<vector<char>>* mapData);
         //맵에 오브젝트 삽입
         void makeObj(Objects& obj);
+        void makeSnake(Snake& snake);
 
 };
 
