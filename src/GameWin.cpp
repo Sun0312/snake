@@ -1,6 +1,6 @@
 #include "GameWin.h"
 
-GameWin::GameWin():map(22,60,0,0),mission(5,15,0,65),score(5,15,7,65),renderer(){
+GameWin::GameWin():map(22,66,0,0),mission(5,15,0,65),score(5,15,7,65),renderer(){
     mvaddstr(12, 30, "GameWin Initialized");    
 }
 

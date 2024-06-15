@@ -27,7 +27,7 @@ void Game::runGame(){
     gameOver = false;
 
     while(!gameOver) {
-        wrefresh(gameWin.getMap().getWin());
+        vector<vector<char>>* grid = gameWin.getMap().getGrid();
 
         // recieve input
         char dir = input();
