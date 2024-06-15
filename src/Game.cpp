@@ -152,6 +152,8 @@ void Game::initGame(){
     initscr();
     noecho();
     curs_set(0);
+    myMap = gameWin.getMap();
+    
     box(gameWin.getMap().getWin(),'*','*');
     wrefresh(myMap.getWin());
     
