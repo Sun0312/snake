@@ -9,7 +9,8 @@ Game::Game() : direction('u') {
 int Game::genRand(int minlength, int maxLength) {
     srand(time(0));
 
-    int randNum = rand() % (maxLength + 1) + minlength;
+    int range = maxLength - minlength + 1;
+    int randNum = rand() % range + minlength;
 
     return randNum;
 }
