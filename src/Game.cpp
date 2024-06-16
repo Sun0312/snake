@@ -1,4 +1,8 @@
 #include "Game.h"
+#include <vector>
+#include <cstdlib>
+#include <chrono>
+#include <ctime>
 
 Game::Game() : direction('u') {
     
@@ -7,7 +11,10 @@ Game::Game() : direction('u') {
 
 //(int 최소값, int 최대값)사이의 랜덤 정수 반환
 int Game::genRand(int minlength, int maxLength) {
-    srand(time(0));
+    auto now = chrono::high_resolution_clock::now();
+    auto duration = now.time_since_epoch();
+    unsigned seed = duration.count();
+    srand(seed);
 
     int range = maxLength - minlength + 1;
     int randNum = rand() % range + minlength;
@@ -151,17 +158,22 @@ void Game::makeObjects(vector<vector<char>>* grid){
     int r1 = gate1.pos.row;
     int c1 = gate1.pos.col;
     int r2 = gate2.pos.row;
-    int c2 = gate2.pos.row;
+    int c2 = gate2.pos.col;
     if(gate1.isOnMap() == false) {
-
         // change position until not in immune wall
-        while (r1 == c1 && r1 == rowLength || r1 == c1 && c1 == columnLength) {
-            r1 = genRand(0, rowLength);
-            c1 = genRand(0, columnLength);
+        while (true) {
+            if (r1 == 0 && c1 == 0 || r1 == 0 && c1 == columnLength || c1 == 0 && r1 == rowLength || c1 == columnLength && r1 == rowLength) {  
+                r1 = genRand(0, rowLength);
+                c1 = genRand(0, columnLength);
+            } else {
+                break;
+            }
         }
-        while (r2 == c2 && r2 == rowLength || r2 == c2 && c2 == columnLength) {
-            r2 = genRand(0, rowLength);
-            c2 = genRand(0, columnLength);
+        while (true) {
+            if (r2 == 0 && c2 == 0 || r2 == 0 && c2 == columnLength || c2 == 0 && r2 == rowLength || c2 == columnLength && r2 == rowLength) {  
+                r2 = genRand(0, rowLength);
+                c2 = genRand(0, columnLength);
+            } else { break; }
         }
     }
 
@@ -170,6 +182,13 @@ void Game::makeObjects(vector<vector<char>>* grid){
     gate1.pos.row = r1;
     gate2.pos.col = c2;
     gate2.pos.row = r2;
+
+    mvprintw(30, 0, "check pos of gate1 -- r1 : %d c1 : %d", r1, c1);
+    mvprintw(31, 0, "check pos of gate1 -- r2 : %d c2 : %d", r2, c2);
+
+    //set gate outDirection
+    gate1.setOutDir(grid, snake.getDir());
+    gate2.setOutDir(grid, snake.getDir());
     
     // change map data
     gameWin.makeObj(grid, poison);
@@ -212,7 +231,7 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
     }
     
 
-    // check if next position is snake :오류
+    // check if next position is snake
     for (deque<Objects>::iterator it = snake.getBody().begin(); it != snake.getBody().end()-1; ++it) {
     if ((*it).pos.col == next_c && (*it).pos.row == next_r) {
              return true;

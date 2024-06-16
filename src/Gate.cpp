@@ -33,29 +33,28 @@ void Gate::increaseGateCnt() {
 }
 
 void Gate::setOutDir(vector<vector<char>>* grid, char inDir) {
-    int rowLength = grid->size();
-    int columnLength = grid->at(0).size();
 
-    int r = 0;
-    int c = 0;
-
-    // regenerate gate position until it is not in an immune wall
-    while (r != c && r != rowLength && c != columnLength) { 
-        r = this->genRand(rowLength);
-        c = this->genRand(columnLength);
-    }
-
-    if (r == 0) { // gate created in upper wall
+    if (pos.row == 0) { // gate created in upper wall
         this->outDirection = 'd';
-    } else if (r == rowLength) { // gate in bottom wall
+    } else if (pos.row == (*grid).size()) { // gate in bottom wall
         this->outDirection = 'u';
-    } else if (c == 0) { // gate created in left wall
+    } else if (pos.col == 0) { // gate created in left wall
         this->outDirection = 'r';
-    } else if (c == columnLength) { // gate in right wall
+    } else if (pos.col == (*grid)[0].size()) { // gate in right wall
         this->outDirection = 'l';
     } else { // gate not in wall
 
-    }
+        // if out direction is not a wall;
+        if (inDir == 'r' && (*grid)[pos.row + 1][pos.col] != '1') {
+            this->outDirection = 'r';
+        } else if (inDir == 'l' && (*grid)[pos.row - 1][pos.col] != '1') {
+            this->outDirection = 'l';
+        } else if (inDir == 'u' && (*grid)[pos.row][pos.col - 1] != '1') {
+            this->outDirection = 'u';
+        } else if (inDir == 'd' && (*grid)[pos.row][pos.col + 1] != '1') {
+            this->outDirection = 'd';
+        }
+        // if out direction is a wall, check clockwise
 
-    grid->at(r).at(c) = this->symbol;
+    }
 }
