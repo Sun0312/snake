@@ -244,12 +244,13 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
     // check if next position is snake
     for (deque<Objects>::iterator it = snake.getBody().begin(); it != snake.getBody().end()-1; ++it) {
     if ((*it).pos.col == next_c && (*it).pos.row == next_r) {
-             return true;
+            return true;
          }
     }
 
     if (mapPosInt == '0') {
         snake.move(dir);
+        return false;
     } else if (mapPosInt == '1') { // encounter wall -> end game
         return true;
     } else if (mapPosInt == '5') { // encounter gate
@@ -257,28 +258,31 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
             snake.setHeadPos(gate2.pos.row, gate2.pos.col);
             snake.move(gate2.getOutDir());
             gate2.increaseGateCnt();
-        } else {
+        } else if (next_r == gate2.pos.row) {
             snake.setHeadPos(gate1.pos.row, gate1.pos.col);
             snake.move(gate1.getOutDir());
             gate1.increaseGateCnt();
         }
         snake.shrink();
+        return false;
     } else if (mapPosInt == '4') { // encounter poison
         snake.move(dir);
         snake.shrink();
         //snake.shrink();
         poison.incPoisonCnt();
         poison.OnMap = false;
+
+        if (snake.getLength() < 3) {
+            return true;
+        } else {
+            return false;
+        }
     } else if (mapPosInt == '3') {
         food.incFoodCnt();
         snake.grow(dir);
         food.OnMap = false;
+        return false;
     }
-
-    if (snake.getLength() < 3) {
-        return true;
-    }
-    
     return false;
 }
 
