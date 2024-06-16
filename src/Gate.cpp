@@ -36,14 +36,13 @@ void Gate::setOutDir(vector<vector<char>>* grid, char inDir) {
 
     if (pos.row == 0) { // gate created in upper wall
         this->outDirection = 'd';
-    } else if (pos.row == (*grid).size()) { // gate in bottom wall
+    } else if (pos.row == (*grid).size()-1) { // gate in bottom wall
         this->outDirection = 'u';
     } else if (pos.col == 0) { // gate created in left wall
         this->outDirection = 'r';
-    } else if (pos.col == (*grid)[0].size()) { // gate in right wall
+    } else if (pos.col == (*grid)[0].size()-1) { // gate in right wall
         this->outDirection = 'l';
     } else { // gate not in wall
-
         // if out direction is not a wall;
         if (inDir == 'r' && (*grid)[pos.row + 1][pos.col] != '1') {
             this->outDirection = 'r';
@@ -55,6 +54,5 @@ void Gate::setOutDir(vector<vector<char>>* grid, char inDir) {
             this->outDirection = 'd';
         }
         // if out direction is a wall, check clockwise
-
     }
 }
