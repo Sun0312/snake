@@ -7,8 +7,8 @@
 using namespace std;
 
 int Gate::gateCnt = 0;
-Gate::Gate():Objects(0, 0, symbol) {}
-Gate::Gate(vector<vector<char>> &map):Objects(0, 0, symbol) {
+Gate::Gate():Objects(0, 0, symbol = '5') {}
+Gate::Gate(vector<vector<char>> &map):Objects(0, 0, symbol = '5') {
    
 
     int rowLength = map.size();
