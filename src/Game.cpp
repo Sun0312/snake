@@ -174,16 +174,16 @@ void Game::makeObjects(vector<vector<char>>* grid){
         // change position until not in immune wall
         while (true) {
             if (r1 == 0 && c1 == 0 || r1 == 0 && c1 == columnLength || c1 == 0 && r1 == rowLength || c1 == columnLength && r1 == rowLength) {  
-                r1 = genRand(0, rowLength);
-                c1 = genRand(0, columnLength);
+                r1 = genRand(0, rowLength-1);
+                c1 = genRand(0, columnLength-1);
             } else {
                 break;
             }
         }
         while (true) {
             if (r2 == 0 && c2 == 0 || r2 == 0 && c2 == columnLength || c2 == 0 && r2 == rowLength || c2 == columnLength && r2 == rowLength) {  
-                r2 = genRand(0, rowLength);
-                c2 = genRand(0, columnLength);
+                r2 = genRand(0, rowLength-1);
+                c2 = genRand(0, columnLength-1);
             } else { break; }
         }
     }
