@@ -75,7 +75,7 @@ void Game::runGame(){
             }
         }
         
-        timeout(2000);
+        timeout(500);
         //erase();
         delete grid;
     }
@@ -239,6 +239,10 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
         food.incFoodCnt();
         snake.grow(dir);
         food.OnMap = false;
+    }
+
+    if (snake.getLength() < 3) {
+        return true;
     }
     
     return false;
