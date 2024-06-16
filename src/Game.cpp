@@ -39,6 +39,10 @@ void Game::runGame(){
     while (!gameOver){
         vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
         snake = Snake(3,3,'r');
+        food = Food();
+        poison = Poison();
+        gate1 = Gate();
+        gate2 = Gate();
     while(!gameOver) {
        
         vector<vector<char>>* grid= new vector<vector<char>>;
@@ -86,10 +90,10 @@ void Game::runGame(){
         }
         
         timeout(500);
-        if (true) {
+        if (gameWin.getMission().missionClear(snake.getLength(), food.getFoodCnt(), poison.getPoisonCnt(), gate1.getGateCnt())){
             gameWin.getMission().nextMission();
             gameWin.getMap().nextMap();
-            endwin();
+
             delete grid;
             break;
         }
