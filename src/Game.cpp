@@ -45,8 +45,6 @@ void Game::runGame(){
         food.getFoodCnt() = 0;
         poison.getPoisonCnt() = 0;
         gate1.getGateCnt() = 0;
-        
-
         gameWin.updateScreen(gameWin.getMap(), init_grid);
     while(!gameOver) {
        
@@ -93,6 +91,7 @@ void Game::runGame(){
                 mvprintw(y, x+ 100, "%c ", grid->at(y).at(x));
             }
         }
+        
         if (gameWin.getMission().missionClear(snake.getLength(), food.getFoodCnt(), poison.getPoisonCnt(), gate1.getGateCnt())){
             gameWin.getMission().nextMission();
             gameWin.getMap().nextMap();

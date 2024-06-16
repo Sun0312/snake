@@ -79,7 +79,7 @@ void Renderer::renderMission(const Mission& mission, Score& score)const{
         string GateData = "Gate:";
         GateData += std::to_string(gateScore);
         GateData += " / ";
-        GateData += std::to_string(gateScore);
+        GateData += std::to_string(gatemission);
         char charsss[100];
         std::strcpy(charsss, GateData.c_str());
         mvwaddstr(win,5,5, charsss);
