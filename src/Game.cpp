@@ -129,8 +129,10 @@ void Game::makeObjects(vector<vector<char>>* grid){
 
     // make food if no food on map
     if (food.isOnMap() == false) {
+
         f_r = genRand(2, rowLength-2);
         f_c = genRand(2, columnLength-2);
+        
     }
 
     // make poison if no poison on map

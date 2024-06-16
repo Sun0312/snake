@@ -55,3 +55,7 @@ int Gate::genRand(int maxLength) {
 void Gate::increaseGateCnt() {
     gateCnt++;
 }
+
+void Gate::setOutDir(char dir) {
+    this->outDirection = dir;
+}
