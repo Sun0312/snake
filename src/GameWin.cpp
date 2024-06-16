@@ -17,6 +17,7 @@ void GameWin::updateScore(Snake &snake, Food &food, Poison& poison, Gate &gate1,
 Map& GameWin::getMap(){return this->map;}
 
 void GameWin::makeObj(vector<vector<char>>* grid, Objects& obj){
+    mvaddstr(5,100,"create");
     renderer.renderObj(grid,obj);
 }
 void GameWin::makeSnake(Snake& snake, vector<vector<char>>* grid) {

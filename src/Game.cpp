@@ -25,8 +25,10 @@ void Game::runGame(){
     refresh();
     // game page
     werase(gameWin.getMap().getWin());
+    //erase();
     gameOver = false;
     vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
+
     while(!gameOver) {
        
         vector<vector<char>>* grid= new vector<vector<char>>;
@@ -41,13 +43,13 @@ void Game::runGame(){
 
         // for debugging
         vector<vector<char>> maps = *init_grid;
-        
+        /*
         for (size_t y = 0; y < maps.size(); ++y) {
             for (size_t x = 0; x < maps[0].size(); ++x) {
                 mvprintw(y, x+ 100, "%c ", maps[y][x]);
             }
         }
-
+        */
         // recieve input
         char dir = input();
         if (dir == 'x') break;
@@ -59,20 +61,23 @@ void Game::runGame(){
         makeObjects(grid);          //cmap에 현재 Objects의 위치에 따라서 배치
 
         // process input
-        gameOver = processInput(dir);
+        gameOver = processInput(dir,grid);
+        
         gameWin.makeSnake(snake,grid);
 
         // update window
         gameWin.updateScore(snake, food, poison, gate1, gate2);
         gameWin.updateScreen(gameWin.getMap(), grid);
-        /*
+        
         for (size_t y = 0; y < grid->size(); ++y) {
             for (size_t x = 0; x < grid->at(0).size(); ++x) {
                 mvprintw(y, x+ 100, "%c ", grid->at(y).at(x));
             }
         }
-        */
+        
         timeout(2000);
+        //erase();
+        delete grid;
     }
     // game end page
 
@@ -170,31 +175,50 @@ void Game::makeObjects(vector<vector<char>>* grid){
 }
 
 //유저 Input에 따른 처리과정
-bool Game::processInput(char dir) {
+bool Game::processInput(char dir, vector<vector<char>>* grid) {
     mvaddstr(30, 30, "processing input");
     Map &map = gameWin.getMap();
-    vector<vector<char>> *pmap = map.getGrid();
-    vector<vector<char>> mapData = *pmap;
-    snake.grow(dir);
-
+    //vector<vector<char>> *pmap = map.getGrid();
+    vector<vector<char>> mapData = *grid;
     int next_r, next_c;
-
     next_c = snake.getPosCol();
     next_r = snake.getPosRow();
+    switch (dir){
+        case 'u':
+            next_r-=2;
+            break;
+        case 'd':
+            next_r+=2;
+            break;
+        case 'r':
+            next_c+=2;
+            break;
+        case 'l':
+            next_c-=2;
+            break;
+    }
+    snake.move(dir);
+    char mapPosInt;
+    try{
+    mapPosInt = mapData.at(next_r).at(next_c);
+    mvprintw(0, 120, "check next position char : %c", mapPosInt);
+    }
+    catch(...){
+        return true;
+    }
+    
 
-    char mapPosInt = mapData[next_r][next_c];
-
-    mvprintw(0, 100, "check next position char : %c", mapPosInt);
-
-    // check if next position is snake
+    // check if next position is snake :오류
+    /*
     for (Objects snakeBody : snake.getBody()) {
         if (snakeBody.pos.col == next_c || snakeBody.pos.row == next_r) {
-            return false;
+            return true;
         }
     }
+    */
 
     if (mapPosInt == '1') { // encounter wall -> end game
-        return false;
+        return true;
     } else if (mapPosInt == '5') { // encounter gate
         if (next_r == gate1.pos.row) {
             snake.setHeadPos(gate2.pos.row, gate2.pos.col);
@@ -208,14 +232,15 @@ bool Game::processInput(char dir) {
         snake.shrink();
     } else if (mapPosInt == '4') { // encounter poison
         snake.shrink();
-        snake.shrink();
+        //snake.shrink();
         poison.incPoisonCnt();
         poison.OnMap = false;
     } else if (mapPosInt == '3') {
         food.incFoodCnt();
         food.OnMap = false;
     }
-    return true;
+    
+    return false;
 }
 
 void Game::initGame(){
