@@ -11,8 +11,30 @@ Gate::Gate():Objects(0, 0, symbol = '5') {}
 Gate::Gate(vector<vector<char>> &map):Objects(0, 0, symbol = '5') {
    
 
-    int rowLength = map.size();
-    int columnLength = map[0].size();
+    
+}
+
+char Gate::getOutDir() {
+    return this->outDirection;
+}
+int Gate::getGateCnt() {
+    return this->gateCnt;
+}
+
+int Gate::genRand(int maxLength) {
+    srand(time(0));
+
+    int randNum = 0 + rand() % (maxLength + 1);
+
+    return randNum;
+}
+void Gate::increaseGateCnt() {
+    gateCnt++;
+}
+
+void Gate::setOutDir(vector<vector<char>>* grid, char inDir) {
+    int rowLength = grid->size();
+    int columnLength = grid->at(0).size();
 
     int r = 0;
     int c = 0;
@@ -35,27 +57,5 @@ Gate::Gate(vector<vector<char>> &map):Objects(0, 0, symbol = '5') {
 
     }
 
-    map[r][c] = 5;
-}
-
-char Gate::getOutDir() {
-    return this->outDirection;
-}
-int Gate::getGateCnt() {
-    return this->gateCnt;
-}
-
-int Gate::genRand(int maxLength) {
-    srand(time(0));
-
-    int randNum = 0 + rand() % (maxLength + 1);
-
-    return randNum;
-}
-void Gate::increaseGateCnt() {
-    gateCnt++;
-}
-
-void Gate::setOutDir(char dir) {
-    this->outDirection = dir;
+    grid->at(r).at(c) = this->symbol;
 }

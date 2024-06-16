@@ -32,7 +32,7 @@ class Gate : public Objects{
 
         //setter
         void increaseGateCnt();
-        void setOutDir(char dir);
+        void setOutDir(vector<vector<char>>* grid, char dir);
 
         //operations
         int genRand(int maxLength);
