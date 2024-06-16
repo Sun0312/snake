@@ -19,6 +19,6 @@ Map& GameWin::getMap(){return this->map;}
 void GameWin::makeObj(vector<vector<char>>* grid, Objects& obj){
     renderer.renderObj(grid,obj);
 }
-void GameWin::makeSnake(Snake& snake) {
-    renderer.renderSnake(map.getGrid(), snake);
+void GameWin::makeSnake(Snake& snake, vector<vector<char>>* grid) {
+    renderer.renderSnake(grid, snake);
 }

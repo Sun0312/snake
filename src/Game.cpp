@@ -26,17 +26,25 @@ void Game::runGame(){
     // game page
     werase(gameWin.getMap().getWin());
     gameOver = false;
-
+    vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
     while(!gameOver) {
-        vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
-        vector<vector<char>> grid_copy = *init_grid;
-        vector<vector<char>>* grid = &grid_copy;
+       
+        vector<vector<char>>* grid= new vector<vector<char>>;
+        grid->resize(init_grid->at(0).size());
+        for (int i = 0 ; i < grid->size();i++){
+            grid->at(i).resize(init_grid->size());
+            for (int j = 0 ; j < grid->size();j++){
+                grid->at(i).at(j) = init_grid->at(i).at(j);
+            }
+        }
+        vector<vector<char>> grid_copy = *grid;
 
         // for debugging
         vector<vector<char>> maps = *init_grid;
+        
         for (size_t y = 0; y < maps.size(); ++y) {
             for (size_t x = 0; x < maps[0].size(); ++x) {
-                mvprintw(y, x+ 150, "%c ", maps[y][x]);
+                mvprintw(y, x+ 100, "%c ", maps[y][x]);
             }
         }
 
@@ -52,11 +60,18 @@ void Game::runGame(){
 
         // process input
         gameOver = processInput(dir);
-        gameWin.makeSnake(snake);
+        gameWin.makeSnake(snake,grid);
 
         // update window
         gameWin.updateScore(snake, food, poison, gate1, gate2);
         gameWin.updateScreen(gameWin.getMap(), grid);
+        /*
+        for (size_t y = 0; y < grid->size(); ++y) {
+            for (size_t x = 0; x < grid->at(0).size(); ++x) {
+                mvprintw(y, x+ 100, "%c ", grid->at(y).at(x));
+            }
+        }
+        */
         timeout(2000);
     }
     // game end page
