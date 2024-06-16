@@ -28,6 +28,9 @@ void Game::runGame(){
     //erase();
     gameOver = false;
     vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
+    vector<vector<char>> pre_grid;
+    pre_grid.resize(init_grid->at(0).size());
+    pre_grid.at(0).resize(init_grid->size());  
 
     while(!gameOver) {
        
@@ -76,7 +79,7 @@ void Game::runGame(){
         }
         
         timeout(500);
-        //erase();
+        pre_grid = *grid;
         delete grid;
     }
     // game end page
@@ -208,11 +211,11 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
     
 
     // check if next position is snake :오류
-    // for (deque<Objects>::iterator it = snake.getBody().begin()+1; it != snake.getBody().end(); ++it) {
-    //     if ((*it).pos.col == next_c || (*it).pos.row == next_r) {
-    //         return true;
-    //     }
-    // }
+    for (deque<Objects>::iterator it = snake.getBody().begin(); it != snake.getBody().end()-1; ++it) {
+    if ((*it).pos.col == next_c && (*it).pos.row == next_r) {
+             return true;
+         }
+    }
 
     if (mapPosInt == '0') {
         snake.move(dir);
