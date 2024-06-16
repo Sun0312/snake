@@ -254,6 +254,8 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
     } else if (mapPosInt == '1') { // encounter wall -> end game
         return true;
     } else if (mapPosInt == '5') { // encounter gate
+        gate1.setOutDir(grid, snake.getDir());
+        gate2.setOutDir(grid, snake.getDir());
         if (next_r == gate1.pos.row) {
             snake.setHeadPos(gate2.pos.row, gate2.pos.col);
             snake.move(gate2.getOutDir());
@@ -263,7 +265,6 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
             snake.move(gate1.getOutDir());
             gate1.increaseGateCnt();
         }
-        snake.shrink();
         return false;
     } else if (mapPosInt == '4') { // encounter poison
         snake.move(dir);
