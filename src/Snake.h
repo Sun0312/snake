@@ -16,7 +16,7 @@ using namespace std;
 
 class SnakeBody : public Objects{
     public:
-        char symbol = 6;
+        char symbol = '6';
         SnakeBody();
         SnakeBody(int r, int c);
 };

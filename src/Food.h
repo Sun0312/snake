@@ -8,7 +8,7 @@ class Food : public Objects{
 
         static int foodCnt;    // ScoreBoard에서 사용할 FoodCnt
     public:
-        char symbol = 3;
+        char symbol = '3';
         //init
         Food();
         Food(int r, int c);

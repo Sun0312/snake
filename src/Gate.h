@@ -19,6 +19,7 @@ class Gate : public Objects{
     private:
         static int gateCnt;
         char outDirection;
+        char symbol = '5';
 
     public:
         //init

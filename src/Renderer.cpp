@@ -13,7 +13,10 @@ void Renderer::renderObj(vector<vector<char>>* grid, Objects &obj)const{
     obj.OnMap = true;
     int r = obj.pos.row;
     int c = obj.pos.col;
-    (*grid)[r][c] = obj.symbol;   //해당위치에 바로 대입하려면 Objects의 위치가 변경될때 유효성검사가 필요함
+    mvprintw(0, 90, "renderObj row : %d", r);
+    mvprintw(1, 90, "renderObj col : %d", c);
+    mvprintw(2, 90, "renderObj symbol : %c", obj.symbol);
+    (*grid)[r][c] = (char)obj.symbol;   //해당위치에 바로 대입하려면 Objects의 위치가 변경될때 유효성검사가 필요함
 }
 
 void Renderer::renderSnake(vector<vector<char>>* grid, Snake &snake)const{

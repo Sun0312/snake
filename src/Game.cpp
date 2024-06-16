@@ -32,6 +32,13 @@ void Game::runGame(){
         vector<vector<char>> grid_copy = *init_grid;
         vector<vector<char>>* grid = &grid_copy;
 
+        vector<vector<char>> maps = *init_grid;
+        for (size_t y = 0; y < maps.size(); ++y) {
+            for (size_t x = 0; x < maps[0].size(); ++x) {
+                mvprintw(y, x+ 150, "%c ", maps[y][x]);
+            }
+        }
+
         // recieve input
         char dir = input();
         if (dir == 'x') break;
