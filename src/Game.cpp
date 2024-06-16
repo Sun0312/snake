@@ -230,6 +230,7 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
         }
         snake.shrink();
     } else if (mapPosInt == '4') { // encounter poison
+        snake.move(dir);
         snake.shrink();
         //snake.shrink();
         poison.incPoisonCnt();
