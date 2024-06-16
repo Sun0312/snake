@@ -185,16 +185,16 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
     next_r = snake.getPosRow();
     switch (dir){
         case 'u':
-            next_r-=2;
+            next_r--;
             break;
         case 'd':
-            next_r+=2;
+            next_r++;
             break;
         case 'r':
-            next_c+=2;
+            next_c++;
             break;
         case 'l':
-            next_c-=2;
+            next_c--;
             break;
     }
     snake.move(dir);
@@ -237,6 +237,7 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
         poison.OnMap = false;
     } else if (mapPosInt == '3') {
         food.incFoodCnt();
+        snake.grow(dir);
         food.OnMap = false;
     }
     
