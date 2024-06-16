@@ -71,7 +71,7 @@ void Renderer::renderMission(const Mission& mission, Score& score)const{
         string poData = "Poison:";
         poData += std::to_string(PoisonScore);
         poData += " / ";
-        poData += std::to_string(PoisonScore);
+        poData += std::to_string(Poisonmission);
         char charssss[100];
         std::strcpy(charssss, poData.c_str());
         mvwaddstr(win,4,5, charssss);

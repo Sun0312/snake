@@ -23,3 +23,5 @@ void GameWin::makeObj(vector<vector<char>>* grid, Objects& obj){
 void GameWin::makeSnake(Snake& snake, vector<vector<char>>* grid) {
     renderer.renderSnake(grid, snake);
 }
+
+Mission& GameWin::getMission(){return this->mission;}

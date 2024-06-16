@@ -30,6 +30,7 @@ class GameWin{
 
         //getter
         Map& getMap();
+        Mission& getMission();
         //setter
 
         //function

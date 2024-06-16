@@ -34,11 +34,11 @@ void Game::runGame(){
     werase(gameWin.getMap().getWin());
     //erase();
     gameOver = false;
-    vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
-    vector<vector<char>> pre_grid;
-    pre_grid.resize(init_grid->at(0).size());
-    pre_grid.at(0).resize(init_grid->size());  
+    
 
+    while (!gameOver){
+        vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
+        snake = Snake(3,3,'r');
     while(!gameOver) {
        
         vector<vector<char>>* grid= new vector<vector<char>>;
@@ -52,7 +52,7 @@ void Game::runGame(){
         vector<vector<char>> grid_copy = *grid;
 
         // for debugging
-        vector<vector<char>> maps = *init_grid;
+        //vector<vector<char>> maps = *init_grid;
         /*
         for (size_t y = 0; y < maps.size(); ++y) {
             for (size_t x = 0; x < maps[0].size(); ++x) {
@@ -86,8 +86,16 @@ void Game::runGame(){
         }
         
         timeout(500);
-        pre_grid = *grid;
+        if (true) {
+            gameWin.getMission().nextMission();
+            gameWin.getMap().nextMap();
+            endwin();
+            delete grid;
+            break;
+        }
+        //pre_grid = *grid;
         delete grid;
+        }
     }
     // game end page
 
@@ -139,7 +147,7 @@ void Game::makeObjects(vector<vector<char>>* grid){
 
         f_r = genRand(2, rowLength-2);
         f_c = genRand(2, columnLength-2);
-        
+
     }
 
     // make poison if no poison on map
