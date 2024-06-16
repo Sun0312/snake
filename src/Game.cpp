@@ -32,6 +32,7 @@ void Game::runGame(){
         vector<vector<char>> grid_copy = *init_grid;
         vector<vector<char>>* grid = &grid_copy;
 
+        // for debugging
         vector<vector<char>> maps = *init_grid;
         for (size_t y = 0; y < maps.size(); ++y) {
             for (size_t x = 0; x < maps[0].size(); ++x) {
@@ -50,7 +51,7 @@ void Game::runGame(){
         makeObjects(grid);          //cmap에 현재 Objects의 위치에 따라서 배치
 
         // process input
-        // gameOver = processInput(dir);
+        gameOver = processInput(dir);
         gameWin.makeSnake(snake);
 
         // update window
