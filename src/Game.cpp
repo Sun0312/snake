@@ -169,6 +169,8 @@ bool Game::processInput(char dir) {
 
     char mapPosInt = mapData[next_r][next_c];
 
+    mvprintw(0, 100, "check next position char : %c", mapPosInt);
+
     // check if next position is snake
     for (Objects snakeBody : snake.getBody()) {
         if (snakeBody.pos.col == next_c || snakeBody.pos.row == next_r) {
@@ -176,7 +178,7 @@ bool Game::processInput(char dir) {
         }
     }
 
-    if (mapPosInt == '1' || mapPosInt == '6') { // encounter wall -> end game
+    if (mapPosInt == '1') { // encounter wall -> end game
         return false;
     } else if (mapPosInt == '5') { // encounter gate
         if (next_r == gate1.pos.row) {
@@ -191,12 +193,13 @@ bool Game::processInput(char dir) {
         snake.shrink();
     } else if (mapPosInt == '4') { // encounter poison
         snake.shrink();
+        snake.shrink();
         poison.incPoisonCnt();
         poison.OnMap = false;
     } else if (mapPosInt == '3') {
         food.incFoodCnt();
         food.OnMap = false;
-    }    
+    }
     return true;
 }
 

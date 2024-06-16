@@ -14,13 +14,6 @@ Snake::Snake(int r, int c, char dir){
     snakes.emplace_back(SnakeBody(r,c));
     snakes.emplace_front(SnakeBody(r,c+2));  //헤드
 
-    // for debugging
-   int t = 0;
-   for (auto it = snakes.begin(); it != snakes.end(); ++it) {
-        mvprintw(0+t, 100, "snake init snakeBody at %d: %c", it->pos.col, it->symbol);
-        t++;
-   }
-
 }
 
 Snake::~Snake(){};
@@ -72,7 +65,13 @@ Snake::~Snake(){};
     }
     void Snake::shrink() {
         snakes.pop_back();     //remove last body      
-        length--;        
+        length--;
+
+        int t = 0;
+        for (auto it = snakes.begin(); it != snakes.end(); ++it) {
+                mvprintw(0+t, 100, "snake shrink check at r: %d, c: %d",it->pos.row, it->pos.col);
+                t++;
+        }
     }
     
     void Snake::setHeadPos(int r, int c){
