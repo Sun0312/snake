@@ -19,7 +19,7 @@ int Game::genRand(int minlength, int maxLength) {
 void Game::runGame(){
     // game title page
     gameWin.updateScreen(gameWin.getMap(), gameWin.getMap().getGrid());
-    box(gameWin.getMap().getWin(),'*','*');
+    //box(gameWin.getMap().getWin(),'*','*');
     wrefresh(gameWin.getMap().getWin());
 
     refresh();
@@ -28,18 +28,20 @@ void Game::runGame(){
     gameOver = false;
 
     while(!gameOver) {
+        
         vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
-        vector<vector<char>> grid_copy = *init_grid;
+        vector<vector<char>> grid_copy(*init_grid); //얕은복사 -> 깊은복사로 변경
         vector<vector<char>>* grid = &grid_copy;
-
+        gameWin.updateScreen(gameWin.getMap(),init_grid);
         // for debugging
         vector<vector<char>> maps = *init_grid;
+        /*
         for (size_t y = 0; y < maps.size(); ++y) {
             for (size_t x = 0; x < maps[0].size(); ++x) {
                 mvprintw(y, x+ 150, "%c ", maps[y][x]);
             }
         }
-
+        */
         // recieve input
         char dir = input();
         if (dir == 'x') break;
@@ -51,13 +53,14 @@ void Game::runGame(){
         makeObjects(grid);          //cmap에 현재 Objects의 위치에 따라서 배치
 
         // process input
-        gameOver = processInput(dir);
-        gameWin.makeSnake(snake);
+        gameOver = processInput(dir, grid);
+        gameWin.makeSnake(grid, snake);
 
         // update window
         gameWin.updateScore(snake, food, poison, gate1, gate2);
         gameWin.updateScreen(gameWin.getMap(), grid);
         timeout(2000);
+        werase(gameWin.getMap().getWin());
     }
     // game end page
 
@@ -155,11 +158,11 @@ void Game::makeObjects(vector<vector<char>>* grid){
 }
 
 //유저 Input에 따른 처리과정
-bool Game::processInput(char dir) {
+bool Game::processInput(char dir, vector<vector<char>> *grid) {
     mvaddstr(30, 30, "processing input");
     Map &map = gameWin.getMap();
-    vector<vector<char>> *pmap = map.getGrid();
-    vector<vector<char>> mapData = *pmap;
+    //vector<vector<char>> *pmap = map.getGrid();   //수정
+    vector<vector<char>> mapData = *grid;
     snake.grow(dir);
 
     int next_r, next_c;

@@ -6,14 +6,14 @@
 Renderer::Renderer(){}
 
 void Renderer::renderObj(vector<vector<char>>* grid, Objects &obj)const{
-    if (grid == nullptr) {
-        
-        return;
-    }
+    vector<vector<char>> wgrid = *grid;
     obj.OnMap = true;
     int r = obj.pos.row;
     int c = obj.pos.col;
-    (*grid)[r][c] = obj.symbol;   //해당위치에 바로 대입하려면 Objects의 위치가 변경될때 유효성검사가 필요함
+    
+    wgrid.at(r).at(c) = obj.symbol;
+    //(*grid)[r][c] = obj.symbol;   //해당위치에 바로 대입하려면 Objects의 위치가 변경될때 유효성검사가 필요함
+
 }
 
 void Renderer::renderSnake(vector<vector<char>>* grid, Snake &snake)const{
@@ -106,9 +106,9 @@ void Renderer::renderMap(const Map& map, vector<vector<char>>* mapData)const{
     init_pair(7, COLOR_WHITE, COLOR_YELLOW); // Snake 색상
 
     for (size_t y = 0; y < maps.size(); ++y) {
-        for (size_t x = 0; x < maps[y].size(); ++x) {
+        for (size_t x = 0; x < maps.at(y).size(); ++x) {
             int pair;
-            char attr = maps[y][x];
+            char attr = maps.at(y).at(x);
             switch(attr){
                 case '0':
                 pair = 1;
