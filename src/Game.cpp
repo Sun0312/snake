@@ -35,7 +35,6 @@ void Game::runGame(){
     //erase();
     gameOver = false;
     
-
     while (!gameOver){
         vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
         snake = Snake(3,3,'r');
@@ -195,8 +194,8 @@ void Game::makeObjects(vector<vector<char>>* grid){
     gate2.pos.col = c2;
     gate2.pos.row = r2;
 
-    mvprintw(30, 0, "check pos of gate1 -- r1 : %d c1 : %d", r1, c1);
-    mvprintw(31, 0, "check pos of gate1 -- r2 : %d c2 : %d", r2, c2);
+    mvprintw(37, 0, "check pos of gate1 -- r1 : %d c1 : %d, max : %d", r1, c1, rowLength);
+    mvprintw(36, 0, "check pos of gate1 -- r2 : %d c2 : %d, max : %d", r2, c2, columnLength);
 
     //set gate outDirection
     gate1.setOutDir(grid, snake.getDir());
@@ -212,7 +211,6 @@ void Game::makeObjects(vector<vector<char>>* grid){
 
 //유저 Input에 따른 처리과정
 bool Game::processInput(char dir, vector<vector<char>>* grid) {
-    mvaddstr(30, 30, "processing input");
     Map &map = gameWin.getMap();
     //vector<vector<char>> *pmap = map.getGrid();
     vector<vector<char>> mapData = *grid;
