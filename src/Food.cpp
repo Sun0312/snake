@@ -11,7 +11,7 @@ Food::Food(int r, int c):Objects(r, c, symbol = '3'){ //temp symbol
 }
 //GETTER
 
-int Food::getFoodCnt(){
+int& Food::getFoodCnt(){
     return foodCnt;
 }
 

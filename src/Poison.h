@@ -14,7 +14,7 @@ class Poison : public Objects{
         Poison(int r, int c);
 
         //getter
-        int getPoisonCnt();
+        int& getPoisonCnt();
 
         //setter
         //poisonCnt를 하나 늘림

@@ -17,7 +17,7 @@ Gate::Gate(vector<vector<char>> &map):Objects(0, 0, symbol = '5') {
 char Gate::getOutDir() {
     return this->outDirection;
 }
-int Gate::getGateCnt() {
+int& Gate::getGateCnt() {
     return this->gateCnt;
 }
 

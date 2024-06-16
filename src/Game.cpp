@@ -35,13 +35,19 @@ void Game::runGame(){
     //erase();
     gameOver = false;
     
-    while (!gameOver){
+    while (gameWin.getMission().getCurrentMissionIndex()<4){
         vector<vector<char>>* init_grid = gameWin.getMap().getGrid();
         snake = Snake(3,3,'r');
         food = Food();
         poison = Poison();
         gate1 = Gate();
         gate2 = Gate();
+        food.getFoodCnt() = 0;
+        poison.getPoisonCnt() = 0;
+        gate1.getGateCnt() = 0;
+        
+
+        gameWin.updateScreen(gameWin.getMap(), init_grid);
     while(!gameOver) {
        
         vector<vector<char>>* grid= new vector<vector<char>>;
@@ -87,8 +93,6 @@ void Game::runGame(){
                 mvprintw(y, x+ 100, "%c ", grid->at(y).at(x));
             }
         }
-        
-        timeout(500);
         if (gameWin.getMission().missionClear(snake.getLength(), food.getFoodCnt(), poison.getPoisonCnt(), gate1.getGateCnt())){
             gameWin.getMission().nextMission();
             gameWin.getMap().nextMap();
@@ -98,6 +102,8 @@ void Game::runGame(){
         }
         //pre_grid = *grid;
         delete grid;
+        timeout(500);
+        
         }
     }
     // game end page

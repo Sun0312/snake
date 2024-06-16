@@ -14,7 +14,7 @@ class Food : public Objects{
         Food(int r, int c);
 
         //getter
-        int getFoodCnt();
+        int& getFoodCnt();
 
         //setter
         //foodCnt를 하나 늘림

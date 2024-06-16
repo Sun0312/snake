@@ -12,7 +12,7 @@ Poison::Poison(int r, int c):Objects(r, c, symbol = '4'){ //symbol임시 설정
 
 //GETTER
 
-int Poison::getPoisonCnt(){
+int& Poison::getPoisonCnt(){
     return poisonCnt;
 }
 

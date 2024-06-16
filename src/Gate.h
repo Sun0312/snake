@@ -28,7 +28,7 @@ class Gate : public Objects{
 
         //getter
         char getOutDir();
-        int getGateCnt();
+        int& getGateCnt();
 
         //setter
         void increaseGateCnt();
