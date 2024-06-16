@@ -197,7 +197,6 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
             next_c--;
             break;
     }
-    snake.move(dir);
     char mapPosInt;
     try{
     mapPosInt = mapData.at(next_r).at(next_c);
@@ -209,13 +208,15 @@ bool Game::processInput(char dir, vector<vector<char>>* grid) {
     
 
     // check if next position is snake :오류
-    for (deque<Objects>::iterator it = snake.getBody().begin() + 1; it != snake.getBody().end(); ++it) {
-        if ((*it).pos.col == next_c || (*it).pos.row == next_r) {
-            return true;
-        }
-    }
+    // for (deque<Objects>::iterator it = snake.getBody().begin()+1; it != snake.getBody().end(); ++it) {
+    //     if ((*it).pos.col == next_c || (*it).pos.row == next_r) {
+    //         return true;
+    //     }
+    // }
 
-    if (mapPosInt == '1') { // encounter wall -> end game
+    if (mapPosInt == '0') {
+        snake.move(dir);
+    } else if (mapPosInt == '1') { // encounter wall -> end game
         return true;
     } else if (mapPosInt == '5') { // encounter gate
         if (next_r == gate1.pos.row) {

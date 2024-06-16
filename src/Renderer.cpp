@@ -102,7 +102,7 @@ void Renderer::renderMap(const Map& map, vector<vector<char>>* mapData)const{
     init_pair(3, COLOR_WHITE, COLOR_BLUE);   // 글자: 흰색, 배경: 파란색
     init_pair(4, COLOR_WHITE, COLOR_GREEN);  // Apple 색상
     init_pair(5, COLOR_WHITE, COLOR_RED);    // Poision 색상
-    init_pair(6, COLOR_WHITE, COLOR_BLUE);   // Gate 색상
+    init_pair(6, COLOR_WHITE, COLOR_MAGENTA);   // Gate 색상
     init_pair(7, COLOR_WHITE, COLOR_YELLOW); // Snake 색상
 
     for (size_t y = 0; y < maps.size(); ++y) {
